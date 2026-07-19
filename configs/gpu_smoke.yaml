@@ -1,0 +1,53 @@
+seed: 3407
+image_size: 128
+model:
+  channels: [16, 32, 64]
+  fusion_blocks: 2
+  max_residual: 0.30
+  foreground_alpha: 1.0
+  background_alpha: 0.25
+  light_alpha: 0.35
+paths:
+  lol_train_low: datasets/raw/LOL/our485/low
+  lol_train_high: datasets/raw/LOL/our485/high
+  lol_val_low: datasets/raw/LOL/eval15/low
+  lol_val_high: datasets/raw/LOL/eval15/high
+  visdrone_llmix: datasets/VisDrone-LL/LLMix
+  visdrone_clean: datasets/VisDrone
+  checkpoints: runs/ladd_gpu_smoke/checkpoints
+pretrain:
+  epochs: 1
+  batch_size: 8
+  max_samples: 32
+  max_val_samples: 4
+  lr: 0.0001
+  lambda_identity: 0.10
+  gradient_clip: 1.0
+  amp: true
+joint:
+  stage: C
+  epochs: 1
+  batch_size: 2
+  workers: 0
+  max_samples: 4
+  lr_enhancer: 0.0001
+  detector_ramp_epochs: 1
+  rec_start: 0.50
+  gradient_clip: 1.0
+  use_detector_confidence: true
+  compute_nwd: true
+  nwd_topk: 100
+  amp: true
+  loss_weights:
+    det: 1.00
+    nwd: 0.20
+    fg_edge: 0.15
+    bg_smooth: 0.05
+    identity: 0.10
+    rec: 0.25
+    latency: 0.02
+    heatmap: 0.10
+detector:
+  weights: runs/detect/runs/yolo_llmix_1ep/weights/best.pt
+  attention_layer: 4
+  neck_start: 10

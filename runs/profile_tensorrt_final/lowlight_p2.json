@@ -1,0 +1,26 @@
+{
+  "engine": "D:\\LOW_LIGHT\\DAT301-SU26\\exports\\final_routed_seed3407\\tensorrt\\lowlight_p2.engine",
+  "tensorrt": "11.1.0.106",
+  "device": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "warmup": 100,
+  "iterations": 1000,
+  "input_tensors": {
+    "images": [
+      1,
+      3,
+      640,
+      640
+    ]
+  },
+  "output_tensors": {
+    "output0": [
+      1,
+      14,
+      34000
+    ]
+  },
+  "mean_ms": 2.4271903371810915,
+  "p50_ms": 2.3961598873138428,
+  "p95_ms": 2.7518784284591673,
+  "fps": 411.99900340794346
+}

@@ -1,0 +1,41 @@
+{
+  "configuration": "none",
+  "domain": "AU_AIR_P2",
+  "images_root": "D:\\LOW_LIGHT\\DAT301-SU26\\datasets\\AU-AIR-YOLO\\images\\test",
+  "labels_root": "D:\\LOW_LIGHT\\DAT301-SU26\\datasets\\AU-AIR-YOLO\\labels_visdrone_overlap\\test",
+  "seed": 3407,
+  "images": 6679,
+  "protocol": {
+    "image_size": 640,
+    "confidence": 0.2,
+    "nms_iou": 0.7,
+    "small_area": 1024.0,
+    "tiny_side": 16.0,
+    "detector_route_threshold": null
+  },
+  "map50": 0.055629223236660384,
+  "map50_95": 0.018828185490104028,
+  "ap_small_50": 0.0012313527901008736,
+  "ap_small_50_95": 0.00030686252820507677,
+  "precision": 0.11740101235640603,
+  "recall": 0.3378496249345816,
+  "f1": 0.17425077415630083,
+  "small_recall": 0.17345462063262354,
+  "tiny_side_recall": 0.05532666274278988,
+  "fp_per_image": 13.079353196586315,
+  "class_wise_recall": {
+    "0": 0.08362068965517241,
+    "2": 0.0,
+    "3": 0.3723916532905297,
+    "4": 0.1797371767698177,
+    "5": 0.2926497277676951,
+    "8": 0.057971014492753624,
+    "9": 0.08264462809917356
+  },
+  "gate_rates": {
+    "none": 1.0
+  },
+  "detector_route_rates": {
+    "lowlight": 1.0
+  }
+}

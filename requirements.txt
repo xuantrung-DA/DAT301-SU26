@@ -3,3 +3,15 @@ numpy
 pillow
 pyyaml
 tqdm
+torch>=2.1
+torchvision>=0.16
+ultralytics>=8.3
+scikit-image>=0.22
+watchdog>=4.0
+tensorboard>=2.15
+onnx>=1.15
+onnxscript>=0.5
+onnxruntime>=1.20
+onnxslim>=0.1.82
+pytest>=8.0
+thop>=0.1.1

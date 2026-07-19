@@ -1,0 +1,24 @@
+{
+  "checkpoint": "D:\\LOW_LIGHT\\DAT301-SU26\\runs\\detect\\runs\\domain_adaptation_exdark\\b0_seed_3407-2\\weights\\best.pt",
+  "checkpoint_bytes": 5448218,
+  "baseline": "B0",
+  "seed": 3407,
+  "metrics": {
+    "epoch": 20.0,
+    "time": 582.524,
+    "train/box_loss": 1.20113,
+    "train/cls_loss": 0.94794,
+    "train/dfl_loss": 1.25324,
+    "metrics/precision(B)": 0.7819,
+    "metrics/recall(B)": 0.65253,
+    "metrics/mAP50(B)": 0.74492,
+    "metrics/mAP50-95(B)": 0.47044,
+    "val/box_loss": 1.42191,
+    "val/cls_loss": 1.23144,
+    "val/dfl_loss": 1.40573,
+    "lr/pg0": 4.2483e-05,
+    "lr/pg1": 4.2483e-05,
+    "lr/pg2": 4.2483e-05
+  },
+  "run_results": "D:\\LOW_LIGHT\\DAT301-SU26\\runs\\detect\\runs\\domain_adaptation_exdark\\b0_seed_3407-2\\results.json"
+}

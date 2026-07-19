@@ -1,0 +1,53 @@
+{
+  "protocol": {
+    "batch": 1,
+    "warmup": 100,
+    "measurements": 1000,
+    "image_size": 640
+  },
+  "mode": "detector",
+  "end_to_end": {
+    "mean_ms": 11.519100799312582,
+    "std_ms": 2.6021962286163465,
+    "p50_ms": 11.02754999010358,
+    "p95_ms": 16.14228000398725,
+    "fps_from_mean": 86.81233174551926
+  },
+  "enhancer": {
+    "mean_ms": 0.0,
+    "std_ms": 0.0,
+    "p50_ms": 0.0,
+    "p95_ms": 0.0,
+    "fps_from_mean": Infinity
+  },
+  "preprocess": {
+    "mean_ms": 0.6512940003885888,
+    "std_ms": 0.22231711001048904,
+    "p50_ms": 0.5973000079393387,
+    "p95_ms": 0.970784996752627,
+    "fps_from_mean": 1535.4049007105223
+  },
+  "detector": {
+    "mean_ms": 10.550817899638787,
+    "std_ms": 2.4628905283801514,
+    "p50_ms": 10.086199996294454,
+    "p95_ms": 14.811794985143925,
+    "fps_from_mean": 94.77938198840828
+  },
+  "gate_rates": {
+    "bypass": 1.0,
+    "light": 0.0,
+    "full": 0.0
+  },
+  "detector_route_rates": {
+    "bright": 0.0,
+    "lowlight": 1.0
+  },
+  "peak_gpu_memory_mb": 91.306640625,
+  "hardware": {
+    "python": "3.12.0",
+    "torch": "2.13.0+cu130",
+    "cuda": "13.0",
+    "device": "NVIDIA GeForce RTX 4060 Laptop GPU"
+  }
+}

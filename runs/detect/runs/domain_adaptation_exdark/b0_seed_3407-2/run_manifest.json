@@ -1,0 +1,18 @@
+{
+  "baseline": "B0",
+  "seed": 3407,
+  "data": "datasets\\ExDark-VisDroneOverlap\\dataset.yaml",
+  "weights": "runs\\detect\\runs\\detector_b0_fix6\\b0_seed_3407\\weights\\best.pt",
+  "model_config": null,
+  "python": "3.12.0",
+  "torch": "2.13.0+cu130",
+  "ultralytics": "8.4.95",
+  "cuda": "13.0",
+  "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "image_size": 640,
+  "batch": 16,
+  "workers": 2,
+  "fraction": 1.0,
+  "epochs": 20,
+  "completed_at_utc": "2026-07-19T02:58:05.507152+00:00"
+}

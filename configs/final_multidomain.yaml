@@ -1,0 +1,20 @@
+schema_version: 1
+selection:
+  mode: explicit_domain_then_luminance
+  note: Real-domain routing must be supplied by deployment metadata; it is not inferred from test labels.
+  real_domains: [ExDark]
+  luminance_threshold: 0.30
+detectors:
+  ExDark:
+    checkpoint: runs/detect/runs/domain_adaptation_exdark/b0_seed_3407-2/weights/best.pt
+    training_data: ExDark train
+    selection_data: ExDark val
+    test_data: ExDark test
+  lowlight:
+    checkpoint: runs/detect/runs/detector_p2_fix5_finetune/b2_seed_3407/weights/best.pt
+  clean:
+    checkpoint: runs/detect/runs/detector_b0_fix6/b0_seed_3407/weights/best.pt
+inference:
+  image_size: 640
+  confidence: 0.20
+  nms_iou: 0.70

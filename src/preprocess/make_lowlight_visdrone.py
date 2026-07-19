@@ -1,21 +1,12 @@
-"""Create LowLight-VisDrone from a YOLO-formatted VisDrone dataset.
-
-Input:
-  datasets/VisDrone/images/{train,val,test}
-  datasets/VisDrone/labels/{train,val,test}
-
-Output:
-  datasets/VisDrone-LL/LL2/images/{train,val,test}
-  datasets/VisDrone-LL/LL2/labels/{train,val,test}
-
-Labels are copied unchanged because only image illumination is degraded.
-"""
+"""Create deterministic LL1/LL2/LL3/LLMix variants of VisDrone."""
 from __future__ import annotations
 
 import argparse
 import csv
+from concurrent.futures import ThreadPoolExecutor
 import hashlib
 import json
+import os
 import shutil
 from pathlib import Path
 
@@ -23,56 +14,108 @@ import cv2
 from tqdm import tqdm
 
 import sys
+
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from preprocess.lowlight import LEVEL_CONFIGS, degrade_image_bgr
 
+LEVEL_CHOICES = ["LL1", "LL2", "LL3", "LLMix"]
+MANIFEST_FIELDS = [
+    "split", "source", "output", "seed", "level", "is_clean", "exposure", "gamma",
+    "read_noise_sigma", "shot_peak", "channel_gain_b", "channel_gain_g", "channel_gain_r",
+    "blur_applied", "blur_type", "jpeg_quality",
+]
+
 
 def stable_seed(base_seed: int, relative_path: str) -> int:
-    digest = hashlib.md5(relative_path.encode("utf-8")).hexdigest()
-    offset = int(digest[:8], 16)
+    offset = int(hashlib.md5(relative_path.encode("utf-8")).hexdigest()[:8], 16)
     return (int(base_seed) + offset) % (2**32 - 1)
 
 
-def copy_labels(input_root: Path, output_root: Path, split: str):
-    src = input_root / "labels" / split
-    dst = output_root / "labels" / split
-    dst.mkdir(parents=True, exist_ok=True)
-    if not src.exists():
-        print(f"[WARN] Missing label folder: {src}")
-        return
-    for lbl in src.glob("*.txt"):
-        shutil.copy2(lbl, dst / lbl.name)
+def choose_mix_level(seed: int) -> str:
+    """20% clean; remaining low-light is 40/40/20 LL1/LL2/LL3."""
+    bucket = int(seed) % 100
+    if bucket < 20:
+        return "CLEAN"
+    lowlight_bucket = bucket - 20
+    if lowlight_bucket < 32:
+        return "LL1"
+    if lowlight_bucket < 64:
+        return "LL2"
+    return "LL3"
 
 
-def process_split(input_root: Path, output_root: Path, split: str, level: str, seed: int, ext: str = ".jpg"):
-    img_dir = input_root / "images" / split
-    out_img_dir = output_root / "images" / split
-    out_img_dir.mkdir(parents=True, exist_ok=True)
-    if not img_dir.exists():
-        print(f"[WARN] Missing image folder: {img_dir}")
-        return []
+def copy_labels(input_root: Path, output_root: Path, split: str) -> None:
+    source = input_root / "labels" / split
+    destination = output_root / "labels" / split
+    destination.mkdir(parents=True, exist_ok=True)
+    if not source.exists():
+        raise FileNotFoundError(f"Missing label folder: {source}")
+    for label in source.glob("*.txt"):
+        shutil.copy2(label, destination / label.name)
 
-    rows = []
-    image_paths = sorted([p for p in img_dir.glob("*.*") if p.suffix.lower() in {".jpg", ".jpeg", ".png"}])
-    for img_path in tqdm(image_paths, desc=f"{level}-{split}"):
-        rel = img_path.relative_to(input_root).as_posix()
-        img_seed = stable_seed(seed, rel)
-        img = cv2.imread(str(img_path), cv2.IMREAD_COLOR)
-        if img is None:
-            print(f"[WARN] Cannot read {img_path}")
-            continue
-        out = degrade_image_bgr(img, level=level, seed=img_seed)
-        out_name = img_path.with_suffix(ext).name
-        out_path = out_img_dir / out_name
-        cv2.imwrite(str(out_path), out)
-        rows.append({"split": split, "source": rel, "output": out_path.relative_to(output_root).as_posix(), "seed": img_seed, "level": level})
+
+def process_split(
+    input_root: Path,
+    output_root: Path,
+    split: str,
+    level: str,
+    seed: int,
+    extension: str = ".jpg",
+    workers: int = 1,
+    overwrite: bool = False,
+    max_images: int | None = None,
+) -> list[dict]:
+    image_dir = input_root / "images" / split
+    output_image_dir = output_root / "images" / split
+    output_image_dir.mkdir(parents=True, exist_ok=True)
+    if not image_dir.exists():
+        raise FileNotFoundError(f"Missing image folder: {image_dir}")
+    image_paths = sorted(path for path in image_dir.glob("*.*") if path.suffix.lower() in {".jpg", ".jpeg", ".png"})
+    if max_images:
+        image_paths = image_paths[:max_images]
+
+    def process_one(image_path: Path) -> dict | None:
+        relative = image_path.relative_to(input_root).as_posix()
+        image_seed = stable_seed(seed, relative)
+        applied_level = choose_mix_level(image_seed) if level == "LLMix" else level
+        output_path = output_image_dir / image_path.with_suffix(extension).name
+        image = cv2.imread(str(image_path), cv2.IMREAD_COLOR)
+        if image is None:
+            return None
+        if applied_level == "CLEAN":
+            result = image
+            metadata = {
+                "seed": image_seed, "level": "CLEAN", "exposure": 1.0, "gamma": 1.0,
+                "read_noise_sigma": 0.0, "shot_peak": 0.0, "channel_gain_b": 1.0,
+                "channel_gain_g": 1.0, "channel_gain_r": 1.0, "blur_applied": False,
+                "blur_type": "none", "jpeg_quality": 100,
+            }
+        else:
+            result, metadata = degrade_image_bgr(image, applied_level, image_seed, return_metadata=True)
+        if overwrite or not output_path.exists():
+            if not cv2.imwrite(str(output_path), result):
+                return None
+        return {
+            "split": split,
+            "source": relative,
+            "output": output_path.relative_to(output_root).as_posix(),
+            "is_clean": applied_level == "CLEAN",
+            **{key: metadata[key] for key in MANIFEST_FIELDS if key in metadata},
+        }
+
+    if workers > 1:
+        cv2.setNumThreads(1)
+        with ThreadPoolExecutor(max_workers=workers) as executor:
+            rows = [row for row in tqdm(executor.map(process_one, image_paths), total=len(image_paths), desc=f"{level}-{split}") if row]
+    else:
+        rows = [row for row in (process_one(path) for path in tqdm(image_paths, desc=f"{level}-{split}")) if row]
     copy_labels(input_root, output_root, split)
     return rows
 
 
-def write_yaml(output_root: Path, level: str):
+def write_yaml(output_root: Path, level: str) -> None:
     names = ["pedestrian", "people", "bicycle", "car", "van", "truck", "tricycle", "awning-tricycle", "bus", "motor"]
-    names_block = "\n".join(f"  {i}: {name}" for i, name in enumerate(names))
+    names_block = "\n".join(f"  {index}: {name}" for index, name in enumerate(names))
     text = f"""# Auto-generated LowLight-VisDrone YOLO config: {level}
 path: {output_root.as_posix()}
 train: images/train
@@ -85,40 +128,45 @@ names:
     (output_root / f"visdrone_{level.lower()}.yaml").write_text(text, encoding="utf-8")
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--input-root", type=Path, required=True, help="YOLO VisDrone root, e.g. datasets/VisDrone")
-    parser.add_argument("--output-root", type=Path, required=True, help="Output root, e.g. datasets/VisDrone-LL/LL2")
-    parser.add_argument("--level", default="LL2", choices=["LL1", "LL2", "LL3"])
-    parser.add_argument("--seed", type=int, default=20260603)
+    parser.add_argument("--input-root", type=Path, required=True)
+    parser.add_argument("--output-root", type=Path, required=True)
+    parser.add_argument("--level", default="LL2", choices=LEVEL_CHOICES)
+    parser.add_argument("--seed", type=int, default=3407)
+    parser.add_argument("--workers", type=int, default=max(1, min(8, (os.cpu_count() or 2) // 2)))
     parser.add_argument("--splits", nargs="+", default=["train", "val", "test"], choices=["train", "val", "test"])
+    parser.add_argument("--overwrite", action="store_true", help="Regenerate existing images using this protocol")
+    parser.add_argument("--max-images", type=int, help="Debug/smoke limit per split")
     args = parser.parse_args()
 
-    args.output_root.mkdir(parents=True, exist_ok=True)
-    all_rows = []
-    for split in args.splits:
-        all_rows.extend(process_split(args.input_root, args.output_root, split, args.level, args.seed))
+    old_config_path = args.output_root / "degradation_config.json"
+    if old_config_path.exists() and not args.overwrite:
+        old_config = json.loads(old_config_path.read_text(encoding="utf-8"))
+        if old_config.get("schema_version") != 2:
+            raise RuntimeError("Output was generated by an older protocol. Use --overwrite or choose a new output directory.")
 
-    cfg = LEVEL_CONFIGS[args.level]
+    args.output_root.mkdir(parents=True, exist_ok=True)
+    rows: list[dict] = []
+    for split in args.splits:
+        rows.extend(process_split(args.input_root, args.output_root, split, args.level, args.seed, workers=args.workers, overwrite=args.overwrite, max_images=args.max_images))
+
     config = {
+        "schema_version": 2,
         "level": args.level,
         "base_seed": args.seed,
-        "beta_range": cfg.beta_range,
-        "gamma_range": cfg.gamma_range,
-        "noise_sigma_range": cfg.noise_sigma_range,
-        "jpeg_quality_range": cfg.jpeg_quality_range,
-        "blur_prob": cfg.blur_prob,
-        "note": "Labels are copied unchanged from clean VisDrone."
+        "level_configs": {name: vars(config) for name, config in LEVEL_CONFIGS.items()},
+        "llmix_distribution": {"clean": 0.20, "within_lowlight": {"LL1": 0.40, "LL2": 0.40, "LL3": 0.20}},
+        "formula": "clip(a * I**gamma * channel_gain + shot_noise + read_noise, 0, 1)",
+        "labels": "Copied unchanged from clean VisDrone.",
     }
-    (args.output_root / "degradation_config.json").write_text(json.dumps(config, indent=2), encoding="utf-8")
-
-    with (args.output_root / "manifest.csv").open("w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=["split", "source", "output", "seed", "level"])
+    old_config_path.write_text(json.dumps(config, indent=2), encoding="utf-8")
+    with (args.output_root / "manifest.csv").open("w", newline="", encoding="utf-8") as file:
+        writer = csv.DictWriter(file, fieldnames=MANIFEST_FIELDS)
         writer.writeheader()
-        writer.writerows(all_rows)
-
+        writer.writerows(rows)
     write_yaml(args.output_root, args.level)
-    print(f"[DONE] Created {args.level} at {args.output_root}")
+    print(f"[DONE] Created {args.level}: {len(rows)} images at {args.output_root}")
 
 
 if __name__ == "__main__":
