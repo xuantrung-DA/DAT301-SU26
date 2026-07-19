@@ -1,0 +1,39 @@
+{
+  "configuration": "none",
+  "domain": "ExDark_B0",
+  "images_root": "D:\\LOW_LIGHT\\DAT301-SU26\\datasets\\ExDark-YOLO\\images\\test",
+  "labels_root": "D:\\LOW_LIGHT\\DAT301-SU26\\datasets\\ExDark-YOLO\\labels_visdrone_overlap\\test",
+  "seed": 3407,
+  "images": 2563,
+  "protocol": {
+    "image_size": 640,
+    "confidence": 0.2,
+    "nms_iou": 0.7,
+    "small_area": 1024.0,
+    "tiny_side": 16.0,
+    "detector_route_threshold": null
+  },
+  "map50": 0.023220901471998873,
+  "map50_95": 0.011398077569235238,
+  "ap_small_50": 0.01458406759344549,
+  "ap_small_50_95": 0.006046819834050182,
+  "precision": 0.06598407281001138,
+  "recall": 0.08748114630467571,
+  "f1": 0.07522697795071337,
+  "small_recall": 0.2780487804878049,
+  "tiny_side_recall": 0.5172413793103449,
+  "fp_per_image": 1.9219664455715957,
+  "class_wise_recall": {
+    "0": 0.07516778523489932,
+    "2": 0.0,
+    "3": 0.1882480957562568,
+    "8": 0.042682926829268296,
+    "9": 0.0
+  },
+  "gate_rates": {
+    "none": 1.0
+  },
+  "detector_route_rates": {
+    "lowlight": 1.0
+  }
+}

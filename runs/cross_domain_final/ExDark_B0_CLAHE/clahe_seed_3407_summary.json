@@ -1,0 +1,39 @@
+{
+  "configuration": "clahe",
+  "domain": "ExDark_B0_CLAHE",
+  "images_root": "D:\\LOW_LIGHT\\DAT301-SU26\\datasets\\ExDark-YOLO\\images\\test",
+  "labels_root": "D:\\LOW_LIGHT\\DAT301-SU26\\datasets\\ExDark-YOLO\\labels_visdrone_overlap\\test",
+  "seed": 3407,
+  "images": 2563,
+  "protocol": {
+    "image_size": 640,
+    "confidence": 0.2,
+    "nms_iou": 0.7,
+    "small_area": 1024.0,
+    "tiny_side": 16.0,
+    "detector_route_threshold": null
+  },
+  "map50": 0.02228490979689552,
+  "map50_95": 0.01104362589763499,
+  "ap_small_50": 0.014192739814070824,
+  "ap_small_50_95": 0.00533566818296751,
+  "precision": 0.05373751291767138,
+  "recall": 0.0784313725490196,
+  "f1": 0.06377759607522487,
+  "small_recall": 0.28292682926829266,
+  "tiny_side_recall": 0.5862068965517241,
+  "fp_per_image": 2.1435817401482637,
+  "class_wise_recall": {
+    "0": 0.0756152125279642,
+    "2": 0.0,
+    "3": 0.14907508161044614,
+    "8": 0.036585365853658534,
+    "9": 0.0
+  },
+  "gate_rates": {
+    "clahe": 1.0
+  },
+  "detector_route_rates": {
+    "lowlight": 1.0
+  }
+}

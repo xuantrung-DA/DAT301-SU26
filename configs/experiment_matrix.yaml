@@ -1,0 +1,16 @@
+registered_seeds: [3407, 2025, 301]
+core:
+  B0: {priority: P0, configuration: YOLO11n clean-trained, eval: [Clean, LL1, LL2, LL3], seeds: 3}
+  B1: {priority: P0, configuration: YOLO11n LL2-trained, eval: [Clean, LL2], seeds: 3}
+  B2: {priority: P0, configuration: YOLO11n LLMix plus 20 percent clean, eval: [Clean, LL1, LL2, LL3], seeds: 3}
+  B3: {priority: P0, configuration: Gamma and CLAHE plus YOLO, eval: [LL2], seeds: 1}
+  B4: {priority: P0, configuration: Multinex-Nano plus frozen YOLO, eval: [LL2, ExDark], seeds: 1, optional_if_code_unavailable: true}
+  M0: {priority: P0, configuration: Bounded enhancer plus YOLO without gate or DG-RDM, eval: [LL2], seeds: 3}
+  M1: {priority: P0, configuration: M0 plus DG-RDM, eval: [LL2], seeds: 3}
+  M2: {priority: P0, configuration: M1 plus adaptive gate, eval: [Clean, LL1, LL2, LL3], seeds: 3}
+  D1: {priority: P0, configuration: TensorRT FP16, eval: [Clean, LL2], seeds: 3, profile_images: 1000}
+exploratory:
+  A1: {priority: P1, configuration: M2 plus slim P2, eval: [LL2], seeds: 1, keep_if: AP-small gain >= 0.005 and overhead <= 2 ms}
+  A2: {priority: P1, configuration: M2 plus NWD, eval: [LL2], seeds: 1, keep_if: AP-small gain >= 0.005}
+  A3: {priority: P1, configuration: full P2 plus NWD, eval: [LL2], seeds: 1, run_after: [A1, A2]}
+  D2: {priority: P2, configuration: TensorRT INT8, eval: [Clean, LL2], seeds: 1, keep_if: mAP drop <= 0.005}

@@ -1,0 +1,2415 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-07-19T02:22:14.271499+00:00",
+  "project_root": "D:\\LOW_LIGHT\\DAT301-SU26",
+  "groups": {
+    "data": [
+      {
+        "path": "datasets/AU-AIR-YOLO/conversion_summary.json",
+        "bytes": 651,
+        "modified_utc": "2026-07-19T01:33:47.195855+00:00",
+        "keys": [
+          "class_id_base",
+          "classes",
+          "counters",
+          "seed",
+          "sequence_assignments",
+          "split_ratios"
+        ],
+        "seed": 3407
+      },
+      {
+        "path": "datasets/AU-AIR-YOLO/overlap_mapping.json",
+        "bytes": 1067,
+        "modified_utc": "2026-07-19T01:33:47.195855+00:00",
+        "keys": [
+          "full_set_names",
+          "visdrone_overlap"
+        ]
+      },
+      {
+        "path": "datasets/ExDark-YOLO/conversion_summary.json",
+        "bytes": 67,
+        "modified_utc": "2026-07-19T01:33:16.632311+00:00",
+        "keys": [
+          "clipped",
+          "objects",
+          "test",
+          "train",
+          "val"
+        ]
+      },
+      {
+        "path": "datasets/ExDark-YOLO/overlap_mapping.json",
+        "bytes": 816,
+        "modified_utc": "2026-07-19T01:33:16.632311+00:00",
+        "keys": [
+          "full_set_names",
+          "visdrone_overlap"
+        ]
+      },
+      {
+        "path": "datasets/processed/AU-AIR/audit.json",
+        "bytes": 7667,
+        "modified_utc": "2026-07-17T19:05:51.308847+00:00",
+        "keys": [
+          "class_count",
+          "counters",
+          "dataset_root",
+          "issues",
+          "issues_truncated",
+          "object_sizes",
+          "ok",
+          "per_class",
+          "per_split",
+          "splits"
+        ]
+      },
+      {
+        "path": "datasets/processed/AU-AIR/conversion_summary.json",
+        "bytes": 651,
+        "modified_utc": "2026-07-17T18:58:50.910299+00:00",
+        "keys": [
+          "class_id_base",
+          "classes",
+          "counters",
+          "seed",
+          "sequence_assignments",
+          "split_ratios"
+        ],
+        "seed": 3407
+      },
+      {
+        "path": "datasets/processed/AU-AIR/overlap_mapping.json",
+        "bytes": 1067,
+        "modified_utc": "2026-07-17T18:58:50.910299+00:00",
+        "keys": [
+          "full_set_names",
+          "visdrone_overlap"
+        ]
+      },
+      {
+        "path": "datasets/processed/ExDark/audit.json",
+        "bytes": 11190,
+        "modified_utc": "2026-07-17T19:04:45.146132+00:00",
+        "keys": [
+          "class_count",
+          "counters",
+          "dataset_root",
+          "issues",
+          "issues_truncated",
+          "object_sizes",
+          "ok",
+          "per_class",
+          "per_split",
+          "splits"
+        ]
+      },
+      {
+        "path": "datasets/processed/ExDark/conversion_summary.json",
+        "bytes": 67,
+        "modified_utc": "2026-07-17T18:56:23.723960+00:00",
+        "keys": [
+          "clipped",
+          "objects",
+          "test",
+          "train",
+          "val"
+        ]
+      },
+      {
+        "path": "datasets/processed/ExDark/overlap_mapping.json",
+        "bytes": 816,
+        "modified_utc": "2026-07-17T18:56:23.723960+00:00",
+        "keys": [
+          "full_set_names",
+          "visdrone_overlap"
+        ]
+      },
+      {
+        "path": "datasets/processed/UAVDT/audit.json",
+        "bytes": 4261,
+        "modified_utc": "2026-07-17T19:12:06.757811+00:00",
+        "keys": [
+          "class_count",
+          "counters",
+          "dataset_root",
+          "issues",
+          "issues_truncated",
+          "object_sizes",
+          "ok",
+          "per_class",
+          "per_split",
+          "splits"
+        ]
+      },
+      {
+        "path": "datasets/processed/UAVDT/conversion_summary.json",
+        "bytes": 178,
+        "modified_utc": "2026-07-17T19:10:57.456165+00:00",
+        "keys": [
+          "clipped",
+          "objects",
+          "sequences",
+          "skipped_duplicate_objects",
+          "skipped_non_detection_frames",
+          "skipped_non_detection_objects",
+          "test",
+          "train"
+        ]
+      },
+      {
+        "path": "datasets/processed/UAVDT/overlap_mapping.json",
+        "bytes": 205,
+        "modified_utc": "2026-07-17T19:10:57.456165+00:00",
+        "keys": [
+          "bus",
+          "car",
+          "truck"
+        ]
+      },
+      {
+        "path": "datasets/VisDrone-LL/LL1/degradation_config.json",
+        "bytes": 1587,
+        "modified_utc": "2026-07-17T15:37:15.186139+00:00",
+        "keys": [
+          "base_seed",
+          "formula",
+          "labels",
+          "level",
+          "level_configs",
+          "llmix_distribution",
+          "schema_version"
+        ]
+      },
+      {
+        "path": "datasets/VisDrone-LL/LL2/degradation_config.json",
+        "bytes": 1587,
+        "modified_utc": "2026-07-17T15:34:28.665757+00:00",
+        "keys": [
+          "base_seed",
+          "formula",
+          "labels",
+          "level",
+          "level_configs",
+          "llmix_distribution",
+          "schema_version"
+        ]
+      },
+      {
+        "path": "datasets/VisDrone-LL/LL3/degradation_config.json",
+        "bytes": 1587,
+        "modified_utc": "2026-07-17T18:53:12.737211+00:00",
+        "keys": [
+          "base_seed",
+          "formula",
+          "labels",
+          "level",
+          "level_configs",
+          "llmix_distribution",
+          "schema_version"
+        ]
+      },
+      {
+        "path": "datasets/VisDrone-LL/LLMix/degradation_config.json",
+        "bytes": 1589,
+        "modified_utc": "2026-07-17T18:53:05.102254+00:00",
+        "keys": [
+          "base_seed",
+          "formula",
+          "labels",
+          "level",
+          "level_configs",
+          "llmix_distribution",
+          "schema_version"
+        ]
+      }
+    ],
+    "configs": [],
+    "results": [
+      {
+        "path": "runs/ablation_gpu_smoke/results.json",
+        "bytes": 855,
+        "modified_utc": "2026-07-15T12:08:49.958566+00:00"
+      },
+      {
+        "path": "runs/ablation_production/clean_seed_3407/clahe_seed_3407_summary.json",
+        "bytes": 805,
+        "modified_utc": "2026-07-18T14:33:14.902907+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "map50",
+          "map50_95",
+          "precision",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "clahe"
+      },
+      {
+        "path": "runs/ablation_production/clean_seed_3407/gamma_seed_3407_summary.json",
+        "bytes": 820,
+        "modified_utc": "2026-07-18T14:31:25.277860+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "map50",
+          "map50_95",
+          "precision",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "gamma"
+      },
+      {
+        "path": "runs/ablation_production/clean_seed_3407/m0_seed_3407_summary.json",
+        "bytes": 836,
+        "modified_utc": "2026-07-18T14:34:53.837686+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "map50",
+          "map50_95",
+          "precision",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "m0"
+      },
+      {
+        "path": "runs/ablation_production/clean_seed_3407/m1_seed_3407_summary.json",
+        "bytes": 803,
+        "modified_utc": "2026-07-18T14:36:20.669197+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "map50",
+          "map50_95",
+          "precision",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "m1"
+      },
+      {
+        "path": "runs/ablation_production/clean_seed_3407/m2_seed_3407_summary.json",
+        "bytes": 803,
+        "modified_utc": "2026-07-18T14:37:49.554965+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "map50",
+          "map50_95",
+          "precision",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "m2"
+      },
+      {
+        "path": "runs/ablation_production/clean_seed_3407/none_seed_3407_summary.json",
+        "bytes": 817,
+        "modified_utc": "2026-07-18T14:30:04.120064+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "map50",
+          "map50_95",
+          "precision",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "none"
+      },
+      {
+        "path": "runs/ablation_production/fix1_ll2_seed_3407/clahe_seed_3407_summary.json",
+        "bytes": 810,
+        "modified_utc": "2026-07-18T16:21:18.590312+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "map50",
+          "map50_95",
+          "precision",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "clahe"
+      },
+      {
+        "path": "runs/ablation_production/fix1_ll2_seed_3407/gamma_seed_3407_summary.json",
+        "bytes": 823,
+        "modified_utc": "2026-07-18T16:18:46.354881+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "map50",
+          "map50_95",
+          "precision",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "gamma"
+      },
+      {
+        "path": "runs/ablation_production/fix1_ll2_seed_3407/m0_seed_3407_summary.json",
+        "bytes": 737,
+        "modified_utc": "2026-07-18T16:22:04.841555+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "map50",
+          "map50_95",
+          "precision",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "m0"
+      },
+      {
+        "path": "runs/ablation_production/fix1_ll2_seed_3407/m1_seed_3407_summary.json",
+        "bytes": 822,
+        "modified_utc": "2026-07-18T16:22:53.647635+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "map50",
+          "map50_95",
+          "precision",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "m1"
+      },
+      {
+        "path": "runs/ablation_production/fix1_ll2_seed_3407/m2_seed_3407_summary.json",
+        "bytes": 822,
+        "modified_utc": "2026-07-18T16:23:50.658760+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "map50",
+          "map50_95",
+          "precision",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "m2"
+      },
+      {
+        "path": "runs/ablation_production/fix1_ll2_seed_3407/none_seed_3407_summary.json",
+        "bytes": 822,
+        "modified_utc": "2026-07-18T16:16:24.310718+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "map50",
+          "map50_95",
+          "precision",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "none"
+      },
+      {
+        "path": "runs/ablation_production/fix2_diagnostics/mlight_seed_3407_summary.json",
+        "bytes": 798,
+        "modified_utc": "2026-07-18T16:25:39.307845+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "map50",
+          "map50_95",
+          "precision",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "mlight"
+      },
+      {
+        "path": "runs/ablation_production/ll2_seed_3407/clahe_seed_3407_summary.json",
+        "bytes": 810,
+        "modified_utc": "2026-07-18T14:25:08.397983+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "map50",
+          "map50_95",
+          "precision",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "clahe"
+      },
+      {
+        "path": "runs/ablation_production/ll2_seed_3407/gamma_seed_3407_summary.json",
+        "bytes": 823,
+        "modified_utc": "2026-07-18T14:23:46.261617+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "map50",
+          "map50_95",
+          "precision",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "gamma"
+      },
+      {
+        "path": "runs/ablation_production/ll2_seed_3407/m0_seed_3407_summary.json",
+        "bytes": 752,
+        "modified_utc": "2026-07-18T14:25:42.919019+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "map50",
+          "map50_95",
+          "precision",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "m0"
+      },
+      {
+        "path": "runs/ablation_production/ll2_seed_3407/m1_seed_3407_summary.json",
+        "bytes": 830,
+        "modified_utc": "2026-07-18T14:26:31.250675+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "map50",
+          "map50_95",
+          "precision",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "m1"
+      },
+      {
+        "path": "runs/ablation_production/ll2_seed_3407/m2_seed_3407_summary.json",
+        "bytes": 830,
+        "modified_utc": "2026-07-18T14:27:19.617339+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "map50",
+          "map50_95",
+          "precision",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "m2"
+      },
+      {
+        "path": "runs/ablation_production/ll2_seed_3407/none_seed_3407_summary.json",
+        "bytes": 822,
+        "modified_utc": "2026-07-18T14:22:19.286022+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "map50",
+          "map50_95",
+          "precision",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "none"
+      },
+      {
+        "path": "runs/cross_domain_final/AU_AIR_B0/none_seed_3407_summary.json",
+        "bytes": 1165,
+        "modified_utc": "2026-07-19T01:57:30.485906+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "detector_route_rates",
+          "domain",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "images_root",
+          "labels_root",
+          "map50",
+          "map50_95",
+          "precision",
+          "protocol",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "none"
+      },
+      {
+        "path": "runs/cross_domain_final/AU_AIR_P2/none_seed_3407_summary.json",
+        "bytes": 1169,
+        "modified_utc": "2026-07-19T02:17:41.901119+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "detector_route_rates",
+          "domain",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "images_root",
+          "labels_root",
+          "map50",
+          "map50_95",
+          "precision",
+          "protocol",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "none"
+      },
+      {
+        "path": "runs/cross_domain_final/ExDark_B0/none_seed_3407_summary.json",
+        "bytes": 1088,
+        "modified_utc": "2026-07-19T01:37:12.659354+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "detector_route_rates",
+          "domain",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "images_root",
+          "labels_root",
+          "map50",
+          "map50_95",
+          "precision",
+          "protocol",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "none"
+      },
+      {
+        "path": "runs/cross_domain_final/ExDark_B0_CLAHE/clahe_seed_3407_summary.json",
+        "bytes": 1094,
+        "modified_utc": "2026-07-19T02:20:45.837535+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "detector_route_rates",
+          "domain",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "images_root",
+          "labels_root",
+          "map50",
+          "map50_95",
+          "precision",
+          "protocol",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "clahe"
+      },
+      {
+        "path": "runs/cross_domain_final/ExDark_B0_Gamma/gamma_seed_3407_summary.json",
+        "bytes": 1097,
+        "modified_utc": "2026-07-19T01:42:35.328822+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "detector_route_rates",
+          "domain",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "images_root",
+          "labels_root",
+          "map50",
+          "map50_95",
+          "precision",
+          "protocol",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "gamma"
+      },
+      {
+        "path": "runs/cross_domain_final/ExDark_P2/none_seed_3407_summary.json",
+        "bytes": 1090,
+        "modified_utc": "2026-07-19T01:38:54.125870+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "detector_route_rates",
+          "domain",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "images_root",
+          "labels_root",
+          "map50",
+          "map50_95",
+          "precision",
+          "protocol",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "none"
+      },
+      {
+        "path": "runs/cross_domain_final/ExDark_Routed/none_seed_3407_summary.json",
+        "bytes": 1143,
+        "modified_utc": "2026-07-19T01:42:58.564471+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "detector_route_rates",
+          "domain",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "images_root",
+          "labels_root",
+          "map50",
+          "map50_95",
+          "precision",
+          "protocol",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "none"
+      },
+      {
+        "path": "runs/detect/runs/detector_adaptation/b2_seed_3407/epoch_history.json",
+        "bytes": 58037,
+        "modified_utc": "2026-07-17T22:16:11.968697+00:00"
+      },
+      {
+        "path": "runs/detect/runs/detector_adaptation/b2_seed_3407/results.json",
+        "bytes": 1766,
+        "modified_utc": "2026-07-17T22:16:11.969695+00:00",
+        "keys": [
+          "baseline",
+          "batch",
+          "best_epoch_index",
+          "best_metrics",
+          "completed_at_utc",
+          "cuda",
+          "data",
+          "epochs",
+          "epochs_completed",
+          "gpu",
+          "image_size",
+          "last_metrics",
+          "model_config",
+          "python",
+          "save_dir",
+          "seed",
+          "torch",
+          "ultralytics",
+          "weights"
+        ],
+        "seed": 3407
+      },
+      {
+        "path": "runs/detect/runs/detector_b0_final_seeds/b0_seed_2025/epoch_history.json",
+        "bytes": 4639,
+        "modified_utc": "2026-07-18T22:33:56.419055+00:00"
+      },
+      {
+        "path": "runs/detect/runs/detector_b0_final_seeds/b0_seed_2025/results.json",
+        "bytes": 1560,
+        "modified_utc": "2026-07-18T22:33:56.421062+00:00",
+        "keys": [
+          "baseline",
+          "batch",
+          "best_epoch_index",
+          "best_metrics",
+          "completed_at_utc",
+          "cuda",
+          "data",
+          "epochs",
+          "epochs_completed",
+          "fraction",
+          "gpu",
+          "image_size",
+          "last_metrics",
+          "model_config",
+          "python",
+          "save_dir",
+          "seed",
+          "torch",
+          "ultralytics",
+          "weights",
+          "workers"
+        ],
+        "seed": 2025
+      },
+      {
+        "path": "runs/detect/runs/detector_b0_final_seeds/b0_seed_301/epoch_history.json",
+        "bytes": 4637,
+        "modified_utc": "2026-07-18T22:45:32.846457+00:00"
+      },
+      {
+        "path": "runs/detect/runs/detector_b0_final_seeds/b0_seed_301/results.json",
+        "bytes": 1556,
+        "modified_utc": "2026-07-18T22:45:32.846457+00:00",
+        "keys": [
+          "baseline",
+          "batch",
+          "best_epoch_index",
+          "best_metrics",
+          "completed_at_utc",
+          "cuda",
+          "data",
+          "epochs",
+          "epochs_completed",
+          "fraction",
+          "gpu",
+          "image_size",
+          "last_metrics",
+          "model_config",
+          "python",
+          "save_dir",
+          "seed",
+          "torch",
+          "ultralytics",
+          "weights",
+          "workers"
+        ],
+        "seed": 301
+      },
+      {
+        "path": "runs/detect/runs/detector_b0_fix6/b0_seed_3407/epoch_history.json",
+        "bytes": 4639,
+        "modified_utc": "2026-07-18T19:01:58.367082+00:00"
+      },
+      {
+        "path": "runs/detect/runs/detector_b0_fix6/b0_seed_3407/results.json",
+        "bytes": 1553,
+        "modified_utc": "2026-07-18T19:01:58.367082+00:00",
+        "keys": [
+          "baseline",
+          "batch",
+          "best_epoch_index",
+          "best_metrics",
+          "completed_at_utc",
+          "cuda",
+          "data",
+          "epochs",
+          "epochs_completed",
+          "fraction",
+          "gpu",
+          "image_size",
+          "last_metrics",
+          "model_config",
+          "python",
+          "save_dir",
+          "seed",
+          "torch",
+          "ultralytics",
+          "weights",
+          "workers"
+        ],
+        "seed": 3407
+      },
+      {
+        "path": "runs/detect/runs/detector_p2_final_seeds/b2_seed_2025/epoch_history.json",
+        "bytes": 4632,
+        "modified_utc": "2026-07-18T20:14:39.748823+00:00"
+      },
+      {
+        "path": "runs/detect/runs/detector_p2_final_seeds/b2_seed_2025/results.json",
+        "bytes": 1589,
+        "modified_utc": "2026-07-18T20:14:39.748823+00:00",
+        "keys": [
+          "baseline",
+          "batch",
+          "best_epoch_index",
+          "best_metrics",
+          "completed_at_utc",
+          "cuda",
+          "data",
+          "epochs",
+          "epochs_completed",
+          "fraction",
+          "gpu",
+          "image_size",
+          "last_metrics",
+          "model_config",
+          "python",
+          "save_dir",
+          "seed",
+          "torch",
+          "ultralytics",
+          "weights",
+          "workers"
+        ],
+        "seed": 2025
+      },
+      {
+        "path": "runs/detect/runs/detector_p2_final_seeds/b2_seed_301/epoch_history.json",
+        "bytes": 4635,
+        "modified_utc": "2026-07-18T21:38:45.417521+00:00"
+      },
+      {
+        "path": "runs/detect/runs/detector_p2_final_seeds/b2_seed_301/results.json",
+        "bytes": 1589,
+        "modified_utc": "2026-07-18T21:38:45.419788+00:00",
+        "keys": [
+          "baseline",
+          "batch",
+          "best_epoch_index",
+          "best_metrics",
+          "completed_at_utc",
+          "cuda",
+          "data",
+          "epochs",
+          "epochs_completed",
+          "fraction",
+          "gpu",
+          "image_size",
+          "last_metrics",
+          "model_config",
+          "python",
+          "save_dir",
+          "seed",
+          "torch",
+          "ultralytics",
+          "weights",
+          "workers"
+        ],
+        "seed": 301
+      },
+      {
+        "path": "runs/detect/runs/p2_smoke/b2_seed_3407/epoch_history.json",
+        "bytes": 449,
+        "modified_utc": "2026-07-18T16:58:34.130421+00:00"
+      },
+      {
+        "path": "runs/detect/runs/p2_smoke/b2_seed_3407/results.json",
+        "bytes": 1541,
+        "modified_utc": "2026-07-18T16:58:34.130421+00:00",
+        "keys": [
+          "baseline",
+          "batch",
+          "best_epoch_index",
+          "best_metrics",
+          "completed_at_utc",
+          "cuda",
+          "data",
+          "epochs",
+          "epochs_completed",
+          "fraction",
+          "gpu",
+          "image_size",
+          "last_metrics",
+          "model_config",
+          "python",
+          "save_dir",
+          "seed",
+          "torch",
+          "ultralytics",
+          "weights",
+          "workers"
+        ],
+        "seed": 3407
+      },
+      {
+        "path": "runs/evaluation_b0_fix6/Clean_conf010/none_seed_3407_summary.json",
+        "bytes": 1146,
+        "modified_utc": "2026-07-18T19:05:19.732346+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "domain",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "images_root",
+          "labels_root",
+          "map50",
+          "map50_95",
+          "precision",
+          "protocol",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "none"
+      },
+      {
+        "path": "runs/evaluation_p2_final/LL2_seed_2025/none_seed_2025_summary.json",
+        "bytes": 1225,
+        "modified_utc": "2026-07-18T20:52:39.017841+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "detector_route_rates",
+          "domain",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "images_root",
+          "labels_root",
+          "map50",
+          "map50_95",
+          "precision",
+          "protocol",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 2025,
+        "configuration": "none"
+      },
+      {
+        "path": "runs/evaluation_p2_final/LL2_seed_301/none_seed_301_summary.json",
+        "bytes": 1190,
+        "modified_utc": "2026-07-18T22:21:59.772449+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "detector_route_rates",
+          "domain",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "images_root",
+          "labels_root",
+          "map50",
+          "map50_95",
+          "precision",
+          "protocol",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 301,
+        "configuration": "none"
+      },
+      {
+        "path": "runs/evaluation_p2_final/LL2_seed_3407/none_seed_3407_summary.json",
+        "bytes": 1244,
+        "modified_utc": "2026-07-18T19:26:39.674253+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "detector_route_rates",
+          "domain",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "images_root",
+          "labels_root",
+          "map50",
+          "map50_95",
+          "precision",
+          "protocol",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "none"
+      },
+      {
+        "path": "runs/evaluation_p2_fix3/Clean/none_seed_3407_summary.json",
+        "bytes": 1097,
+        "modified_utc": "2026-07-18T18:06:24.102941+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "domain",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "images_root",
+          "labels_root",
+          "map50",
+          "map50_95",
+          "precision",
+          "protocol",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "none"
+      },
+      {
+        "path": "runs/evaluation_p2_fix3/LL2/none_seed_3407_summary.json",
+        "bytes": 1097,
+        "modified_utc": "2026-07-18T18:02:04.907833+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "domain",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "images_root",
+          "labels_root",
+          "map50",
+          "map50_95",
+          "precision",
+          "protocol",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "none"
+      },
+      {
+        "path": "runs/evaluation_p2_fix5/LL2_conf010/none_seed_3407_summary.json",
+        "bytes": 1144,
+        "modified_utc": "2026-07-18T18:50:15.204298+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "domain",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "images_root",
+          "labels_root",
+          "map50",
+          "map50_95",
+          "precision",
+          "protocol",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "none"
+      },
+      {
+        "path": "runs/evaluation_p2_fix5/LL2_conf015/none_seed_3407_summary.json",
+        "bytes": 1242,
+        "modified_utc": "2026-07-18T19:22:22.762024+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "detector_route_rates",
+          "domain",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "images_root",
+          "labels_root",
+          "map50",
+          "map50_95",
+          "precision",
+          "protocol",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "none"
+      },
+      {
+        "path": "runs/evaluation_p2_fix5/LL2_conf020/none_seed_3407_summary.json",
+        "bytes": 1244,
+        "modified_utc": "2026-07-18T19:26:39.674253+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "detector_route_rates",
+          "domain",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "images_root",
+          "labels_root",
+          "map50",
+          "map50_95",
+          "precision",
+          "protocol",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "none"
+      },
+      {
+        "path": "runs/evaluation_routed_fix6/Clean/none_seed_3407_summary.json",
+        "bytes": 1274,
+        "modified_utc": "2026-07-18T19:10:23.889267+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "detector_route_rates",
+          "domain",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "images_root",
+          "labels_root",
+          "map50",
+          "map50_95",
+          "precision",
+          "protocol",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "none"
+      },
+      {
+        "path": "runs/evaluation_routed_fix6/LL2/none_seed_3407_summary.json",
+        "bytes": 1238,
+        "modified_utc": "2026-07-18T19:14:35.077642+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "detector_route_rates",
+          "domain",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "images_root",
+          "labels_root",
+          "map50",
+          "map50_95",
+          "precision",
+          "protocol",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "none"
+      },
+      {
+        "path": "runs/gpu_smoke_checkpoints/joint_history.json",
+        "bytes": 104,
+        "modified_utc": "2026-07-15T12:05:56.253047+00:00"
+      },
+      {
+        "path": "runs/gpu_smoke_checkpoints/pretrain_history.json",
+        "bytes": 96,
+        "modified_utc": "2026-07-15T12:05:29.036578+00:00"
+      },
+      {
+        "path": "runs/ladd_gpu_smoke/checkpoints/stage_b_history.json",
+        "bytes": 210,
+        "modified_utc": "2026-07-16T08:49:28.195197+00:00"
+      },
+      {
+        "path": "runs/ladd_gpu_smoke/checkpoints/stage_c_history.json",
+        "bytes": 478,
+        "modified_utc": "2026-07-16T08:49:59.494130+00:00"
+      },
+      {
+        "path": "runs/ladd_gpu_smoke/checkpoints/stage_d_history.json",
+        "bytes": 478,
+        "modified_utc": "2026-07-16T08:50:31.413318+00:00"
+      },
+      {
+        "path": "runs/ladd_gpu_smoke/evaluation/m2_seed_3407_summary.json",
+        "bytes": 522,
+        "modified_utc": "2026-07-16T08:46:28.627557+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "map50",
+          "map50_95",
+          "precision",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "m2"
+      },
+      {
+        "path": "runs/ladd_gpu_smoke/evaluation/none_seed_3407_summary.json",
+        "bytes": 524,
+        "modified_utc": "2026-07-16T08:46:13.534853+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "map50",
+          "map50_95",
+          "precision",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "none"
+      },
+      {
+        "path": "runs/ladd_gpu_smoke/evaluation_final/m2_seed_3407_summary.json",
+        "bytes": 521,
+        "modified_utc": "2026-07-16T08:51:20.241951+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "map50",
+          "map50_95",
+          "precision",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "m2"
+      },
+      {
+        "path": "runs/ladd_gpu_smoke/evaluation_final/none_seed_3407_summary.json",
+        "bytes": 524,
+        "modified_utc": "2026-07-16T08:51:33.517591+00:00",
+        "keys": [
+          "ap_small_50",
+          "ap_small_50_95",
+          "class_wise_recall",
+          "configuration",
+          "f1",
+          "fp_per_image",
+          "gate_rates",
+          "images",
+          "map50",
+          "map50_95",
+          "precision",
+          "recall",
+          "seed",
+          "small_recall",
+          "tiny_side_recall"
+        ],
+        "seed": 3407,
+        "configuration": "none"
+      },
+      {
+        "path": "runs/ladd_uav/checkpoints/seed_3407/stage_b_history.json",
+        "bytes": 8328,
+        "modified_utc": "2026-07-17T19:33:42.355375+00:00"
+      },
+      {
+        "path": "runs/ladd_uav/checkpoints/seed_3407/stage_c_history.json",
+        "bytes": 15105,
+        "modified_utc": "2026-07-18T09:48:32.180981+00:00"
+      },
+      {
+        "path": "runs/ladd_uav/checkpoints/seed_3407/stage_d_history.json",
+        "bytes": 14869,
+        "modified_utc": "2026-07-18T14:18:18.778282+00:00"
+      },
+      {
+        "path": "runs/ladd_uav/checkpoints/seed_3407_fix1/stage_c_history.json",
+        "bytes": 5488,
+        "modified_utc": "2026-07-18T16:12:42.825694+00:00"
+      },
+      {
+        "path": "runs/smoke_checkpoints/joint_history.json",
+        "bytes": 105,
+        "modified_utc": "2026-07-15T11:35:00.664322+00:00"
+      },
+      {
+        "path": "runs/smoke_checkpoints/pretrain_history.json",
+        "bytes": 97,
+        "modified_utc": "2026-07-15T11:34:44.197756+00:00"
+      }
+    ],
+    "checkpoints": [
+      {
+        "path": "runs/detect/runs/detector_adaptation/b2_seed_3407/weights/best.pt",
+        "bytes": 5462938,
+        "modified_utc": "2026-07-17T22:15:59.138529+00:00"
+      },
+      {
+        "path": "runs/detect/runs/detector_adaptation/b2_seed_3407/weights/last.pt",
+        "bytes": 5462938,
+        "modified_utc": "2026-07-17T22:15:59.074666+00:00"
+      },
+      {
+        "path": "runs/detect/runs/detector_b0_final_seeds/b0_seed_2025/weights/best.pt",
+        "bytes": 5446810,
+        "modified_utc": "2026-07-18T22:33:44.223961+00:00"
+      },
+      {
+        "path": "runs/detect/runs/detector_b0_final_seeds/b0_seed_2025/weights/last.pt",
+        "bytes": 5446810,
+        "modified_utc": "2026-07-18T22:33:44.137446+00:00"
+      },
+      {
+        "path": "runs/detect/runs/detector_b0_final_seeds/b0_seed_301/weights/best.pt",
+        "bytes": 5446810,
+        "modified_utc": "2026-07-18T22:45:23.211568+00:00"
+      },
+      {
+        "path": "runs/detect/runs/detector_b0_final_seeds/b0_seed_301/weights/last.pt",
+        "bytes": 5446810,
+        "modified_utc": "2026-07-18T22:45:23.164284+00:00"
+      },
+      {
+        "path": "runs/detect/runs/detector_b0_fix6/b0_seed_3407/weights/best.onnx",
+        "bytes": 5359007,
+        "modified_utc": "2026-07-19T01:27:17.880106+00:00"
+      },
+      {
+        "path": "runs/detect/runs/detector_b0_fix6/b0_seed_3407/weights/best.pt",
+        "bytes": 5446810,
+        "modified_utc": "2026-07-18T19:01:48.580251+00:00"
+      },
+      {
+        "path": "runs/detect/runs/detector_b0_fix6/b0_seed_3407/weights/last.pt",
+        "bytes": 5446810,
+        "modified_utc": "2026-07-18T19:01:48.516314+00:00"
+      },
+      {
+        "path": "runs/detect/runs/detector_p2_final_finetune/b2_seed_2025/weights/best.pt",
+        "bytes": 21761789,
+        "modified_utc": "2026-07-18T20:48:01.688234+00:00"
+      },
+      {
+        "path": "runs/detect/runs/detector_p2_final_finetune/b2_seed_2025/weights/last.pt",
+        "bytes": 21761789,
+        "modified_utc": "2026-07-18T20:48:01.672219+00:00"
+      },
+      {
+        "path": "runs/detect/runs/detector_p2_final_finetune/b2_seed_301/weights/best.pt",
+        "bytes": 21761917,
+        "modified_utc": "2026-07-18T22:16:30.432782+00:00"
+      },
+      {
+        "path": "runs/detect/runs/detector_p2_final_finetune/b2_seed_301/weights/last.pt",
+        "bytes": 21761917,
+        "modified_utc": "2026-07-18T22:16:30.417070+00:00"
+      },
+      {
+        "path": "runs/detect/runs/detector_p2_final_seeds/b2_seed_2025/weights/best.pt",
+        "bytes": 5658330,
+        "modified_utc": "2026-07-18T20:14:26.503561+00:00"
+      },
+      {
+        "path": "runs/detect/runs/detector_p2_final_seeds/b2_seed_2025/weights/last.pt",
+        "bytes": 5658330,
+        "modified_utc": "2026-07-18T20:14:26.436062+00:00"
+      },
+      {
+        "path": "runs/detect/runs/detector_p2_final_seeds/b2_seed_301/weights/best.pt",
+        "bytes": 5658330,
+        "modified_utc": "2026-07-18T21:38:31.994107+00:00"
+      },
+      {
+        "path": "runs/detect/runs/detector_p2_final_seeds/b2_seed_301/weights/last.pt",
+        "bytes": 5658330,
+        "modified_utc": "2026-07-18T21:38:31.931678+00:00"
+      },
+      {
+        "path": "runs/detect/runs/detector_p2_fix3/b2_seed_3407/weights/best.pt",
+        "bytes": 21762109,
+        "modified_utc": "2026-07-18T17:55:15.074471+00:00"
+      },
+      {
+        "path": "runs/detect/runs/detector_p2_fix3/b2_seed_3407/weights/last.pt",
+        "bytes": 21762365,
+        "modified_utc": "2026-07-18T18:11:08.924039+00:00"
+      },
+      {
+        "path": "runs/detect/runs/detector_p2_fix4/b2_seed_3407/weights/best.pt",
+        "bytes": 21761085,
+        "modified_utc": "2026-07-18T18:23:33.647745+00:00"
+      },
+      {
+        "path": "runs/detect/runs/detector_p2_fix4/b2_seed_3407/weights/last.pt",
+        "bytes": 21761085,
+        "modified_utc": "2026-07-18T18:23:33.623329+00:00"
+      },
+      {
+        "path": "runs/detect/runs/detector_p2_fix5_finetune/b2_seed_3407/weights/best.onnx",
+        "bytes": 5719218,
+        "modified_utc": "2026-07-19T01:27:16.346699+00:00"
+      },
+      {
+        "path": "runs/detect/runs/detector_p2_fix5_finetune/b2_seed_3407/weights/best.pt",
+        "bytes": 21761405,
+        "modified_utc": "2026-07-18T18:43:29.588523+00:00"
+      },
+      {
+        "path": "runs/detect/runs/detector_p2_fix5_finetune/b2_seed_3407/weights/last.pt",
+        "bytes": 21761405,
+        "modified_utc": "2026-07-18T18:43:29.576336+00:00"
+      },
+      {
+        "path": "runs/detect/runs/p2_smoke/b2_seed_3407/weights/best.pt",
+        "bytes": 5657114,
+        "modified_utc": "2026-07-18T16:58:23.213766+00:00"
+      },
+      {
+        "path": "runs/detect/runs/p2_smoke/b2_seed_3407/weights/last.pt",
+        "bytes": 5657114,
+        "modified_utc": "2026-07-18T16:58:22.964065+00:00"
+      },
+      {
+        "path": "runs/detect/runs/yolo_llmix_1ep/weights/best.onnx",
+        "bytes": 11183617,
+        "modified_utc": "2026-07-16T08:51:04.662180+00:00"
+      },
+      {
+        "path": "runs/detect/runs/yolo_llmix_1ep/weights/best.pt",
+        "bytes": 5423578,
+        "modified_utc": "2026-07-15T11:55:54.171742+00:00"
+      },
+      {
+        "path": "runs/detect/runs/yolo_llmix_1ep/weights/last.pt",
+        "bytes": 5423578,
+        "modified_utc": "2026-07-15T11:55:54.116709+00:00"
+      },
+      {
+        "path": "runs/gpu_smoke_checkpoints/joint_last.pt",
+        "bytes": 9198649,
+        "modified_utc": "2026-07-15T12:05:56.253047+00:00"
+      },
+      {
+        "path": "runs/gpu_smoke_checkpoints/pretrain_best.pt",
+        "bytes": 9199171,
+        "modified_utc": "2026-07-15T12:05:29.034566+00:00"
+      },
+      {
+        "path": "runs/gpu_smoke_checkpoints/pretrain_last.pt",
+        "bytes": 9199171,
+        "modified_utc": "2026-07-15T12:05:29.003607+00:00"
+      },
+      {
+        "path": "runs/gpu_smoke_exports/generator.onnx",
+        "bytes": 5635787,
+        "modified_utc": "2026-07-15T12:09:10.722876+00:00"
+      },
+      {
+        "path": "runs/ladd_gpu_smoke/checkpoints/joint_last.pt",
+        "bytes": 10740726,
+        "modified_utc": "2026-07-16T08:50:31.412707+00:00"
+      },
+      {
+        "path": "runs/ladd_gpu_smoke/checkpoints/stage_b_best.pt",
+        "bytes": 137075,
+        "modified_utc": "2026-07-16T08:49:28.195197+00:00"
+      },
+      {
+        "path": "runs/ladd_gpu_smoke/checkpoints/stage_b_last.pt",
+        "bytes": 137075,
+        "modified_utc": "2026-07-16T08:49:28.187548+00:00"
+      },
+      {
+        "path": "runs/ladd_gpu_smoke/checkpoints/stage_c_last.pt",
+        "bytes": 10741964,
+        "modified_utc": "2026-07-16T08:49:59.424855+00:00"
+      },
+      {
+        "path": "runs/ladd_gpu_smoke/checkpoints/stage_d_last.pt",
+        "bytes": 10741964,
+        "modified_utc": "2026-07-16T08:50:31.356235+00:00"
+      },
+      {
+        "path": "runs/ladd_gpu_smoke/export/enhancer_full.onnx",
+        "bytes": 118422,
+        "modified_utc": "2026-07-16T08:43:59.031103+00:00"
+      },
+      {
+        "path": "runs/ladd_gpu_smoke/export/enhancer_light.onnx",
+        "bytes": 100679,
+        "modified_utc": "2026-07-16T08:43:58.793442+00:00"
+      },
+      {
+        "path": "runs/ladd_gpu_smoke/export/gate.onnx",
+        "bytes": 13782,
+        "modified_utc": "2026-07-16T08:43:58.454814+00:00"
+      },
+      {
+        "path": "runs/ladd_gpu_smoke/export_final/enhancer_full.onnx",
+        "bytes": 108694,
+        "modified_utc": "2026-07-16T08:51:00.531864+00:00"
+      },
+      {
+        "path": "runs/ladd_gpu_smoke/export_final/enhancer_light.onnx",
+        "bytes": 100679,
+        "modified_utc": "2026-07-16T08:51:00.293244+00:00"
+      },
+      {
+        "path": "runs/ladd_gpu_smoke/export_final/gate.onnx",
+        "bytes": 13782,
+        "modified_utc": "2026-07-16T08:50:59.910545+00:00"
+      },
+      {
+        "path": "runs/ladd_gpu_smoke/export_final/yolo11n.onnx",
+        "bytes": 11183617,
+        "modified_utc": "2026-07-16T08:51:04.662180+00:00"
+      },
+      {
+        "path": "runs/ladd_uav/checkpoints/seed_3407/joint_last.pt",
+        "bytes": 10896326,
+        "modified_utc": "2026-07-18T14:18:18.776278+00:00"
+      },
+      {
+        "path": "runs/ladd_uav/checkpoints/seed_3407/stage_b_best.pt",
+        "bytes": 292707,
+        "modified_utc": "2026-07-17T19:25:59.121600+00:00"
+      },
+      {
+        "path": "runs/ladd_uav/checkpoints/seed_3407/stage_b_last.pt",
+        "bytes": 292707,
+        "modified_utc": "2026-07-17T19:33:42.353376+00:00"
+      },
+      {
+        "path": "runs/ladd_uav/checkpoints/seed_3407/stage_c_last.pt",
+        "bytes": 10897596,
+        "modified_utc": "2026-07-18T09:48:32.149241+00:00"
+      },
+      {
+        "path": "runs/ladd_uav/checkpoints/seed_3407/stage_d_last.pt",
+        "bytes": 10897596,
+        "modified_utc": "2026-07-18T14:18:18.744884+00:00"
+      },
+      {
+        "path": "runs/ladd_uav/checkpoints/seed_3407_fix1/joint_last.pt",
+        "bytes": 10896454,
+        "modified_utc": "2026-07-18T16:12:42.822486+00:00"
+      },
+      {
+        "path": "runs/ladd_uav/checkpoints/seed_3407_fix1/stage_c_last.pt",
+        "bytes": 10897724,
+        "modified_utc": "2026-07-18T16:12:42.781262+00:00"
+      },
+      {
+        "path": "runs/smoke_checkpoints/joint_last.pt",
+        "bytes": 1603153,
+        "modified_utc": "2026-07-15T11:35:00.663319+00:00"
+      },
+      {
+        "path": "runs/smoke_checkpoints/pretrain_best.pt",
+        "bytes": 1603619,
+        "modified_utc": "2026-07-15T11:34:44.196757+00:00"
+      },
+      {
+        "path": "runs/smoke_checkpoints/pretrain_last.pt",
+        "bytes": 1603619,
+        "modified_utc": "2026-07-15T11:34:44.188746+00:00"
+      },
+      {
+        "path": "runs/smoke_exports/generator.onnx",
+        "bytes": 1128879,
+        "modified_utc": "2026-07-15T11:40:52.619749+00:00"
+      }
+    ],
+    "checkpoint_metadata": [
+      {
+        "path": "runs/detect/runs/detector_adaptation/b2_seed_3407/weights/best.json",
+        "bytes": 901,
+        "modified_utc": "2026-07-17T22:16:11.969695+00:00",
+        "keys": [
+          "baseline",
+          "checkpoint",
+          "checkpoint_bytes",
+          "metrics",
+          "run_results",
+          "seed"
+        ],
+        "seed": 3407
+      },
+      {
+        "path": "runs/detect/runs/detector_adaptation/b2_seed_3407/weights/last.json",
+        "bytes": 901,
+        "modified_utc": "2026-07-17T22:16:11.970694+00:00",
+        "keys": [
+          "baseline",
+          "checkpoint",
+          "checkpoint_bytes",
+          "metrics",
+          "run_results",
+          "seed"
+        ],
+        "seed": 3407
+      },
+      {
+        "path": "runs/detect/runs/detector_b0_final_seeds/b0_seed_2025/weights/best.json",
+        "bytes": 792,
+        "modified_utc": "2026-07-18T22:33:56.421062+00:00",
+        "keys": [
+          "baseline",
+          "checkpoint",
+          "checkpoint_bytes",
+          "metrics",
+          "run_results",
+          "seed"
+        ],
+        "seed": 2025
+      },
+      {
+        "path": "runs/detect/runs/detector_b0_final_seeds/b0_seed_2025/weights/last.json",
+        "bytes": 792,
+        "modified_utc": "2026-07-18T22:33:56.423067+00:00",
+        "keys": [
+          "baseline",
+          "checkpoint",
+          "checkpoint_bytes",
+          "metrics",
+          "run_results",
+          "seed"
+        ],
+        "seed": 2025
+      },
+      {
+        "path": "runs/detect/runs/detector_b0_final_seeds/b0_seed_301/weights/best.json",
+        "bytes": 788,
+        "modified_utc": "2026-07-18T22:45:32.848469+00:00",
+        "keys": [
+          "baseline",
+          "checkpoint",
+          "checkpoint_bytes",
+          "metrics",
+          "run_results",
+          "seed"
+        ],
+        "seed": 301
+      },
+      {
+        "path": "runs/detect/runs/detector_b0_final_seeds/b0_seed_301/weights/last.json",
+        "bytes": 788,
+        "modified_utc": "2026-07-18T22:45:32.848469+00:00",
+        "keys": [
+          "baseline",
+          "checkpoint",
+          "checkpoint_bytes",
+          "metrics",
+          "run_results",
+          "seed"
+        ],
+        "seed": 301
+      },
+      {
+        "path": "runs/detect/runs/detector_b0_fix6/b0_seed_3407/weights/best.json",
+        "bytes": 778,
+        "modified_utc": "2026-07-18T19:01:58.367082+00:00",
+        "keys": [
+          "baseline",
+          "checkpoint",
+          "checkpoint_bytes",
+          "metrics",
+          "run_results",
+          "seed"
+        ],
+        "seed": 3407
+      },
+      {
+        "path": "runs/detect/runs/detector_b0_fix6/b0_seed_3407/weights/last.json",
+        "bytes": 778,
+        "modified_utc": "2026-07-18T19:01:58.367082+00:00",
+        "keys": [
+          "baseline",
+          "checkpoint",
+          "checkpoint_bytes",
+          "metrics",
+          "run_results",
+          "seed"
+        ],
+        "seed": 3407
+      },
+      {
+        "path": "runs/detect/runs/detector_p2_final_seeds/b2_seed_2025/weights/best.json",
+        "bytes": 791,
+        "modified_utc": "2026-07-18T20:14:39.748823+00:00",
+        "keys": [
+          "baseline",
+          "checkpoint",
+          "checkpoint_bytes",
+          "metrics",
+          "run_results",
+          "seed"
+        ],
+        "seed": 2025
+      },
+      {
+        "path": "runs/detect/runs/detector_p2_final_seeds/b2_seed_2025/weights/last.json",
+        "bytes": 791,
+        "modified_utc": "2026-07-18T20:14:39.748823+00:00",
+        "keys": [
+          "baseline",
+          "checkpoint",
+          "checkpoint_bytes",
+          "metrics",
+          "run_results",
+          "seed"
+        ],
+        "seed": 2025
+      },
+      {
+        "path": "runs/detect/runs/detector_p2_final_seeds/b2_seed_301/weights/best.json",
+        "bytes": 789,
+        "modified_utc": "2026-07-18T21:38:45.419788+00:00",
+        "keys": [
+          "baseline",
+          "checkpoint",
+          "checkpoint_bytes",
+          "metrics",
+          "run_results",
+          "seed"
+        ],
+        "seed": 301
+      },
+      {
+        "path": "runs/detect/runs/detector_p2_final_seeds/b2_seed_301/weights/last.json",
+        "bytes": 789,
+        "modified_utc": "2026-07-18T21:38:45.419788+00:00",
+        "keys": [
+          "baseline",
+          "checkpoint",
+          "checkpoint_bytes",
+          "metrics",
+          "run_results",
+          "seed"
+        ],
+        "seed": 301
+      },
+      {
+        "path": "runs/detect/runs/p2_smoke/b2_seed_3407/weights/best.json",
+        "bytes": 745,
+        "modified_utc": "2026-07-18T16:58:34.130421+00:00",
+        "keys": [
+          "baseline",
+          "checkpoint",
+          "checkpoint_bytes",
+          "metrics",
+          "run_results",
+          "seed"
+        ],
+        "seed": 3407
+      },
+      {
+        "path": "runs/detect/runs/p2_smoke/b2_seed_3407/weights/last.json",
+        "bytes": 745,
+        "modified_utc": "2026-07-18T16:58:34.130421+00:00",
+        "keys": [
+          "baseline",
+          "checkpoint",
+          "checkpoint_bytes",
+          "metrics",
+          "run_results",
+          "seed"
+        ],
+        "seed": 3407
+      },
+      {
+        "path": "runs/gpu_smoke_checkpoints/joint_history.json",
+        "bytes": 104,
+        "modified_utc": "2026-07-15T12:05:56.253047+00:00"
+      },
+      {
+        "path": "runs/ladd_gpu_smoke/checkpoints/stage_b_history.json",
+        "bytes": 210,
+        "modified_utc": "2026-07-16T08:49:28.195197+00:00"
+      },
+      {
+        "path": "runs/ladd_gpu_smoke/checkpoints/stage_c_history.json",
+        "bytes": 478,
+        "modified_utc": "2026-07-16T08:49:59.494130+00:00"
+      },
+      {
+        "path": "runs/ladd_gpu_smoke/checkpoints/stage_d_history.json",
+        "bytes": 478,
+        "modified_utc": "2026-07-16T08:50:31.413318+00:00"
+      },
+      {
+        "path": "runs/ladd_uav/checkpoints/seed_3407/joint_last.json",
+        "bytes": 3060,
+        "modified_utc": "2026-07-18T14:18:18.776278+00:00",
+        "keys": [
+          "architecture",
+          "checkpoint",
+          "checkpoint_bytes",
+          "config",
+          "detector_source",
+          "epoch",
+          "metrics",
+          "saved_at_utc",
+          "stage",
+          "state_dicts"
+        ],
+        "stage": "D",
+        "epoch": 30,
+        "architecture": "LADD-UAV"
+      },
+      {
+        "path": "runs/ladd_uav/checkpoints/seed_3407/stage_b_best.json",
+        "bytes": 2559,
+        "modified_utc": "2026-07-17T19:25:59.121600+00:00",
+        "keys": [
+          "architecture",
+          "checkpoint",
+          "checkpoint_bytes",
+          "config",
+          "epoch",
+          "metrics",
+          "saved_at_utc",
+          "state_dicts"
+        ],
+        "epoch": 25,
+        "architecture": "LADD-UAV"
+      },
+      {
+        "path": "runs/ladd_uav/checkpoints/seed_3407/stage_b_history.json",
+        "bytes": 8328,
+        "modified_utc": "2026-07-17T19:33:42.355375+00:00"
+      },
+      {
+        "path": "runs/ladd_uav/checkpoints/seed_3407/stage_b_last.json",
+        "bytes": 2559,
+        "modified_utc": "2026-07-17T19:33:42.354373+00:00",
+        "keys": [
+          "architecture",
+          "checkpoint",
+          "checkpoint_bytes",
+          "config",
+          "epoch",
+          "metrics",
+          "saved_at_utc",
+          "state_dicts"
+        ],
+        "epoch": 40,
+        "architecture": "LADD-UAV"
+      },
+      {
+        "path": "runs/ladd_uav/checkpoints/seed_3407/stage_c_history.json",
+        "bytes": 15105,
+        "modified_utc": "2026-07-18T09:48:32.180981+00:00"
+      },
+      {
+        "path": "runs/ladd_uav/checkpoints/seed_3407/stage_c_last.json",
+        "bytes": 3061,
+        "modified_utc": "2026-07-18T09:48:32.149241+00:00",
+        "keys": [
+          "architecture",
+          "checkpoint",
+          "checkpoint_bytes",
+          "config",
+          "detector_source",
+          "epoch",
+          "metrics",
+          "saved_at_utc",
+          "stage",
+          "state_dicts"
+        ],
+        "stage": "C",
+        "epoch": 30,
+        "architecture": "LADD-UAV"
+      },
+      {
+        "path": "runs/ladd_uav/checkpoints/seed_3407/stage_d_history.json",
+        "bytes": 14869,
+        "modified_utc": "2026-07-18T14:18:18.778282+00:00"
+      },
+      {
+        "path": "runs/ladd_uav/checkpoints/seed_3407/stage_d_last.json",
+        "bytes": 3062,
+        "modified_utc": "2026-07-18T14:18:18.744884+00:00",
+        "keys": [
+          "architecture",
+          "checkpoint",
+          "checkpoint_bytes",
+          "config",
+          "detector_source",
+          "epoch",
+          "metrics",
+          "saved_at_utc",
+          "stage",
+          "state_dicts"
+        ],
+        "stage": "D",
+        "epoch": 30,
+        "architecture": "LADD-UAV"
+      },
+      {
+        "path": "runs/ladd_uav/checkpoints/seed_3407_fix1/joint_last.json",
+        "bytes": 3201,
+        "modified_utc": "2026-07-18T16:12:42.824699+00:00",
+        "keys": [
+          "architecture",
+          "checkpoint",
+          "checkpoint_bytes",
+          "config",
+          "detector_source",
+          "epoch",
+          "metrics",
+          "saved_at_utc",
+          "stage",
+          "state_dicts"
+        ],
+        "stage": "C",
+        "epoch": 10,
+        "architecture": "LADD-UAV"
+      },
+      {
+        "path": "runs/ladd_uav/checkpoints/seed_3407_fix1/stage_c_history.json",
+        "bytes": 5488,
+        "modified_utc": "2026-07-18T16:12:42.825694+00:00"
+      },
+      {
+        "path": "runs/ladd_uav/checkpoints/seed_3407_fix1/stage_c_last.json",
+        "bytes": 3203,
+        "modified_utc": "2026-07-18T16:12:42.782260+00:00",
+        "keys": [
+          "architecture",
+          "checkpoint",
+          "checkpoint_bytes",
+          "config",
+          "detector_source",
+          "epoch",
+          "metrics",
+          "saved_at_utc",
+          "stage",
+          "state_dicts"
+        ],
+        "stage": "C",
+        "epoch": 10,
+        "architecture": "LADD-UAV"
+      },
+      {
+        "path": "runs/smoke_checkpoints/joint_history.json",
+        "bytes": 105,
+        "modified_utc": "2026-07-15T11:35:00.664322+00:00"
+      }
+    ],
+    "deployment": [
+      {
+        "path": "runs/ladd_gpu_smoke/export/parity_report.json",
+        "bytes": 665,
+        "modified_utc": "2026-07-16T08:44:03.390162+00:00",
+        "keys": [
+          "branching",
+          "detector_onnx",
+          "detector_source",
+          "generator_checkpoint",
+          "image_size",
+          "max_absolute_error",
+          "opset"
+        ]
+      },
+      {
+        "path": "runs/ladd_gpu_smoke/export_final/parity_report.json",
+        "bytes": 659,
+        "modified_utc": "2026-07-16T08:51:04.669181+00:00",
+        "keys": [
+          "branching",
+          "detector_onnx",
+          "detector_source",
+          "generator_checkpoint",
+          "image_size",
+          "max_absolute_error",
+          "opset"
+        ]
+      },
+      {
+        "path": "runs/ladd_gpu_smoke/profile/latency_adaptive.json",
+        "bytes": 1015,
+        "modified_utc": "2026-07-16T08:45:23.044945+00:00",
+        "keys": [
+          "detector",
+          "end_to_end",
+          "enhancer",
+          "gate_rates",
+          "hardware",
+          "mode",
+          "peak_gpu_memory_mb",
+          "protocol"
+        ]
+      },
+      {
+        "path": "runs/ladd_gpu_smoke/profile/latency_bypass.json",
+        "bytes": 1014,
+        "modified_utc": "2026-07-16T08:45:37.182483+00:00",
+        "keys": [
+          "detector",
+          "end_to_end",
+          "enhancer",
+          "gate_rates",
+          "hardware",
+          "mode",
+          "peak_gpu_memory_mb",
+          "protocol"
+        ]
+      },
+      {
+        "path": "runs/ladd_gpu_smoke/profile/latency_light.json",
+        "bytes": 1009,
+        "modified_utc": "2026-07-16T08:45:49.501688+00:00",
+        "keys": [
+          "detector",
+          "end_to_end",
+          "enhancer",
+          "gate_rates",
+          "hardware",
+          "mode",
+          "peak_gpu_memory_mb",
+          "protocol"
+        ]
+      },
+      {
+        "path": "runs/ladd_gpu_smoke/profile/model_profile.json",
+        "bytes": 381,
+        "modified_utc": "2026-07-16T08:46:00.088999+00:00",
+        "keys": [
+          "checkpoint_mb",
+          "detector",
+          "enhancer_full",
+          "full_pipeline_gflops_always_full",
+          "full_pipeline_parameters",
+          "gate_parameters",
+          "generator_total_parameters",
+          "image_size"
+        ]
+      },
+      {
+        "path": "runs/ladd_gpu_smoke/profile_final/latency_adaptive.json",
+        "bytes": 1219,
+        "modified_utc": "2026-07-16T08:54:56.085835+00:00",
+        "keys": [
+          "detector",
+          "end_to_end",
+          "enhancer",
+          "gate_rates",
+          "hardware",
+          "mode",
+          "peak_gpu_memory_mb",
+          "preprocess",
+          "protocol"
+        ]
+      },
+      {
+        "path": "runs/ladd_gpu_smoke/profile_final/model_profile.json",
+        "bytes": 383,
+        "modified_utc": "2026-07-16T08:51:49.000587+00:00",
+        "keys": [
+          "checkpoint_mb",
+          "detector",
+          "enhancer_full",
+          "full_pipeline_gflops_always_full",
+          "full_pipeline_parameters",
+          "gate_parameters",
+          "generator_total_parameters",
+          "image_size"
+        ]
+      },
+      {
+        "path": "runs/profile_final_fix6/LL2/latency_detector.json",
+        "bytes": 1233,
+        "modified_utc": "2026-07-18T19:27:34.752352+00:00",
+        "keys": [
+          "detector",
+          "detector_route_rates",
+          "end_to_end",
+          "enhancer",
+          "gate_rates",
+          "hardware",
+          "mode",
+          "peak_gpu_memory_mb",
+          "preprocess",
+          "protocol"
+        ]
+      },
+      {
+        "path": "runs/profile_tensorrt_final/parity.json",
+        "bytes": 643,
+        "modified_utc": "2026-07-19T01:32:47.175333+00:00",
+        "keys": [
+          "candidate",
+          "input_seed",
+          "input_shape",
+          "models",
+          "reference"
+        ]
+      }
+    ]
+  },
+  "counts": {
+    "data": 17,
+    "configs": 0,
+    "results": 67,
+    "checkpoints": 56,
+    "checkpoint_metadata": 30,
+    "deployment": 10
+  }
+}

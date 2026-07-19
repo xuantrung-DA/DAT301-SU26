@@ -1,0 +1,64 @@
+seed: 3407
+image_size: 640
+model:
+  channels: [24, 48, 96]
+  fusion_blocks: 3
+  max_residual: 0.35
+  foreground_alpha: 1.0
+  background_alpha: 0.25
+  light_alpha: 0.35
+paths:
+  lol_train_low: datasets/raw/LOL/our485/low
+  lol_train_high: datasets/raw/LOL/our485/high
+  lol_val_low: datasets/raw/LOL/eval15/low
+  lol_val_high: datasets/raw/LOL/eval15/high
+  visdrone_llmix: datasets/VisDrone-LL/LLMix
+  visdrone_clean: datasets/VisDrone
+  checkpoints: runs/ladd_uav/checkpoints/seed_3407
+pretrain:
+  epochs: 40
+  batch_size: 8
+  lr: 0.0001
+  weight_decay: 0.0001
+  lambda_identity: 0.10
+  gradient_clip: 1.0
+  amp: true
+joint:
+  stage: C
+  epochs: 30
+  batch_size: 4
+  workers: 2
+  lr_enhancer: 0.0001
+  weight_decay: 0.0001
+  detector_ramp_epochs: 5
+  rec_start: 0.50
+  gradient_clip: 1.0
+  use_detector_confidence: true
+  compute_nwd: true
+  nwd_topk: 300
+  amp: true
+  loss_weights:
+    det: 1.00
+    nwd: 0.20
+    fg_edge: 0.15
+    bg_smooth: 0.05
+    identity: 0.10
+    rec: 0.25
+    latency: 0.02
+    heatmap: 0.10
+detector:
+  weights: runs/detect/runs/detector_adaptation/b2_seed_3407/weights/best.pt
+  attention_layer: 4
+  neck_start: 10
+evaluation:
+  seeds: [3407, 2025, 301]
+  confidence: 0.25
+  iou: 0.70
+  small_area: 1024
+  tiny_side: 16
+  bootstrap_samples: 2000
+deployment:
+  warmup: 100
+  measurements: 1000
+  batch_size: 1
+  fp16: true

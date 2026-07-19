@@ -1,0 +1,44 @@
+{
+  "configuration": "none",
+  "domain": "LL2",
+  "images_root": "D:\\LOW_LIGHT\\DAT301-SU26\\datasets\\VisDrone-LL\\LL2\\images\\val",
+  "labels_root": "D:\\LOW_LIGHT\\DAT301-SU26\\datasets\\VisDrone-LL\\LL2\\labels\\val",
+  "seed": 301,
+  "images": 548,
+  "protocol": {
+    "image_size": 640,
+    "confidence": 0.2,
+    "nms_iou": 0.7,
+    "small_area": 1024.0,
+    "tiny_side": 16.0,
+    "detector_route_threshold": null
+  },
+  "map50": 0.13812135273721587,
+  "map50_95": 0.07494788938055247,
+  "ap_small_50": 0.05514617229433686,
+  "ap_small_50_95": 0.019692136897806856,
+  "precision": 0.5864560871845679,
+  "recall": 0.2596300214143812,
+  "f1": 0.3599198826853607,
+  "small_recall": 0.13710890493381467,
+  "tiny_side_recall": 0.07431964944649447,
+  "fp_per_image": 12.94890510948905,
+  "class_wise_recall": {
+    "0": 0.10504296698326548,
+    "1": 0.0175609756097561,
+    "2": 0.0,
+    "3": 0.6001137656427759,
+    "4": 0.11949367088607595,
+    "5": 0.096,
+    "6": 0.0,
+    "7": 0.0,
+    "8": 0.15139442231075698,
+    "9": 0.05280392959476054
+  },
+  "gate_rates": {
+    "none": 1.0
+  },
+  "detector_route_rates": {
+    "lowlight": 1.0
+  }
+}

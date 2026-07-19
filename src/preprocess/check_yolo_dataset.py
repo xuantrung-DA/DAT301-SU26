@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter, defaultdict
+import json
 from pathlib import Path
 
 import yaml
@@ -27,12 +28,15 @@ def resolve_root(data_yaml: Path, cfg: dict) -> Path:
     return root
 
 
-def check_split(root: Path, split_name: str, rel_img_dir: str, n_classes: int, imgsz_for_small: int = 640):
+def check_split(root: Path, split_name: str, rel_img_dir: str, n_classes: int):
     img_dir = root / rel_img_dir
     label_dir = root / "labels" / split_name
     images = sorted([p for p in img_dir.glob("*.*") if p.suffix.lower() in IMG_EXTS]) if img_dir.exists() else []
     class_counter = Counter()
     small_counter = Counter()
+    medium_counter = Counter()
+    large_counter = Counter()
+    tiny_side_counter = Counter()
     errors = []
     n_boxes = 0
 
@@ -41,10 +45,14 @@ def check_split(root: Path, split_name: str, rel_img_dir: str, n_classes: int, i
         if not lbl_path.exists():
             errors.append(f"missing label: {lbl_path}")
             continue
-        with Image.open(img_path) as im:
-            w_img, h_img = im.size
-        scale_x = imgsz_for_small / w_img
-        scale_y = imgsz_for_small / h_img
+        try:
+            with Image.open(img_path) as im:
+                im.verify()
+            with Image.open(img_path) as im:
+                w_img, h_img = im.size
+        except Exception as exc:
+            errors.append(f"corrupt image {img_path}: {exc}")
+            continue
         for line_no, line in enumerate(lbl_path.read_text(encoding="utf-8").splitlines(), start=1):
             if not line.strip():
                 continue
@@ -65,10 +73,16 @@ def check_split(root: Path, split_name: str, rel_img_dir: str, n_classes: int, i
                 continue
             n_boxes += 1
             class_counter[cls] += 1
-            # COCO-style small proxy after resizing to imgsz_for_small.
-            box_area_resized = (bw * w_img * scale_x) * (bh * h_img * scale_y)
-            if box_area_resized < 32 * 32:
+            box_width, box_height = bw * w_img, bh * h_img
+            box_area = box_width * box_height
+            if box_area < 32 * 32:
                 small_counter[cls] += 1
+            elif box_area < 96 * 96:
+                medium_counter[cls] += 1
+            else:
+                large_counter[cls] += 1
+            if box_width < 16 or box_height < 16:
+                tiny_side_counter[cls] += 1
 
     return {
         "split": split_name,
@@ -76,6 +90,10 @@ def check_split(root: Path, split_name: str, rel_img_dir: str, n_classes: int, i
         "boxes": n_boxes,
         "class_counter": dict(class_counter),
         "small_counter": dict(small_counter),
+        "medium_counter": dict(medium_counter),
+        "large_counter": dict(large_counter),
+        "tiny_side_counter": dict(tiny_side_counter),
+        "image_stems": [path.stem for path in images],
         "errors": errors[:50],
         "n_errors_total": len(errors),
     }
@@ -84,7 +102,7 @@ def check_split(root: Path, split_name: str, rel_img_dir: str, n_classes: int, i
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--data", type=Path, required=True, help="YOLO data YAML")
-    parser.add_argument("--imgsz-for-small", type=int, default=640)
+    parser.add_argument("--output", type=Path, help="Optional JSON audit report")
     args = parser.parse_args()
 
     cfg = load_yaml(args.data)
@@ -99,8 +117,14 @@ def main():
     for split, rel_img_dir in split_map.items():
         if not rel_img_dir:
             continue
-        result = check_split(root, split, rel_img_dir, n_classes, args.imgsz_for_small)
+        result = check_split(root, split, rel_img_dir, n_classes)
         all_results.append(result)
+
+    leakage = {}
+    for index, first in enumerate(all_results):
+        for second in all_results[index + 1:]:
+            overlap = sorted(set(first["image_stems"]) & set(second["image_stems"]))
+            leakage[f"{first['split']}__{second['split']}"] = {"count": len(overlap), "examples": overlap[:20]}
 
     for r in all_results:
         print("\n" + "=" * 80)
@@ -110,11 +134,20 @@ def main():
         for cls, count in sorted(r["class_counter"].items()):
             name = names.get(cls, names.get(str(cls), str(cls)))
             small = r["small_counter"].get(cls, 0)
-            print(f"  {cls:2d} {name:16s}: {count:8d} boxes | small={small:8d}")
+            medium = r["medium_counter"].get(cls, 0)
+            large = r["large_counter"].get(cls, 0)
+            tiny = r["tiny_side_counter"].get(cls, 0)
+            print(f"  {cls:2d} {name:16s}: {count:8d} | small={small:8d} medium={medium:8d} large={large:8d} tiny-side={tiny:8d}")
         if r["errors"]:
             print("First errors:")
             for e in r["errors"][:10]:
                 print("  -", e)
+    print("\nLeakage by image stem:", leakage)
+    if args.output:
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        serializable = [{key: value for key, value in result.items() if key != "image_stems"} for result in all_results]
+        args.output.write_text(json.dumps({"data": str(args.data), "root": str(root), "splits": serializable, "leakage": leakage}, indent=2), encoding="utf-8")
+        print(f"[DONE] Wrote {args.output}")
 
 
 if __name__ == "__main__":

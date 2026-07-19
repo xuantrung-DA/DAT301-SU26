@@ -1,0 +1,28 @@
+schema_version: 1
+name: LADD-UAV-safe-routed-P2
+image_size: 640
+confidence: 0.20
+nms_iou: 0.70
+detector_route_threshold: 0.30
+enhancer_enabled: false
+decision_note: "M0/M1/M2 enhancer reduced recall in every LL2 luminance bin; disabled until a future ablation proves gain."
+seeds:
+  3407:
+    lowlight_detector: runs/detect/runs/detector_p2_fix5_finetune/b2_seed_3407/weights/best.pt
+    clean_detector: runs/detect/runs/detector_b0_fix6/b0_seed_3407/weights/best.pt
+  2025:
+    lowlight_detector: runs/detect/runs/detector_p2_final_finetune/b2_seed_2025/weights/best.pt
+    clean_detector: runs/detect/runs/detector_b0_final_seeds/b0_seed_2025/weights/best.pt
+  301:
+    lowlight_detector: runs/detect/runs/detector_p2_final_finetune/b2_seed_301/weights/best.pt
+    clean_detector: runs/detect/runs/detector_b0_final_seeds/b0_seed_301/weights/best.pt
+acceptance_results:
+  ll2_map50_mean_std: [0.13830878597190233, 0.00018377538484220095]
+  ll2_map50_95_mean_std: [0.0741792230816422, 0.0008004941316746111]
+  ll2_ap_small_50_mean_std: [0.05631173960213554, 0.0010436056549346067]
+  ll2_recall_mean_std: [0.274577087472157, 0.013778733590734085]
+  ll2_small_recall_mean_std: [0.149042318491777, 0.011810058441291455]
+  clean_map50_mean_std_ultralytics: [0.23285, 0.000752861208988756]
+  latency_p50_ms: 11.02754999010358
+  latency_p95_ms: 16.14228000398725
+  fps: 86.81233174551926
