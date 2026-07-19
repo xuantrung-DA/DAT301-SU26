@@ -34,3 +34,7 @@ LL2 mean gates, clean-safety and latency pass. Zero-shot real-domain relative mA
 An additional B0 branch was fine-tuned only on the ExDark overlap `train` split and selected only with the `val` split. The untouched 2,563-image `test` split reaches mAP50 `0.69321` and mAP50-95 `0.44460`, versus B0 mAP50 `0.02322`. This passes the ≥5% real-domain improvement target when supervised domain adaptation is permitted.
 
 The adapted checkpoint is not a universal replacement: it scores mAP50 `0.00849` on LL2 and `0.02036` on clean VisDrone. Production therefore retains the existing P2 low-light and B0 clean branches and adds the adapted branch only under explicit ExDark domain metadata, as documented in `configs/final_multidomain.yaml`. This is a supervised adaptation result, not a zero-shot generalization claim.
+
+## Learned-router update
+
+The explicit metadata requirement has been removed. A 5,755-parameter learned router obtains 91.90% balanced routing accuracy with p95 latency `0.523 ms`. End-to-end routed mAP50 is `0.13916` on LL2 and `0.60492` on ExDark. Clean mAP50 is `0.21079` in the independent evaluator versus B0's `0.21227` under the same protocol, a `0.70%` safety delta. Full novelty and ablation framing is in `docs/NOVELTY_REPORT.md`.

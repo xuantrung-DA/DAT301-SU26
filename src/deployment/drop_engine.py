@@ -9,17 +9,17 @@ import time
 import cv2
 import torch
 
-from inference import enhance_bgr_with_details, letterbox_bgr, load_detector, load_generator, save_detection_json, serialize_ultralytics
+from inference import enhance_bgr_with_details, letterbox_bgr, load_detector, load_domain_router, load_generator, route_domain_bgr, save_detection_json, serialize_ultralytics
 
 IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".bmp"}
 
 
 class DropEngine:
-    def __init__(self, input_dir: Path, output_dir: Path, generator_checkpoint: Path | None, yolo_weights: str, confidence: float, force_mode: str | None = None, image_size: int = 640, bright_yolo: str | None = None, route_threshold: float = 0.30):
+    def __init__(self, input_dir: Path, output_dir: Path, generator_checkpoint: Path | None, yolo_weights: str, confidence: float, force_mode: str | None = None, image_size: int = 640, bright_yolo: str | None = None, route_threshold: float = 0.30, real_yolo: str | None = None, router_checkpoint: Path | None = None):
         self.input_dir, self.output_dir = input_dir, output_dir; self.confidence = confidence
         self.input_dir.mkdir(parents=True, exist_ok=True); self.output_dir.mkdir(parents=True, exist_ok=True)
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        self.generator = load_generator(generator_checkpoint, self.device) if generator_checkpoint else None; self.detector = load_detector(yolo_weights); self.bright_detector = load_detector(bright_yolo) if bright_yolo else None; self.route_threshold = route_threshold; self.queue, self.seen = Queue(), set(); self.force_mode = force_mode; self.image_size = image_size
+        self.generator = load_generator(generator_checkpoint, self.device) if generator_checkpoint else None; self.detector = load_detector(yolo_weights); self.bright_detector = load_detector(bright_yolo) if bright_yolo else None; self.real_detector = load_detector(real_yolo) if real_yolo else None; self.domain_router, self.router_size = load_domain_router(router_checkpoint, self.device) if router_checkpoint else (None, 160); self.route_threshold = route_threshold; self.queue, self.seen = Queue(), set(); self.force_mode = force_mode; self.image_size = image_size
 
     def scan(self):
         for path in sorted(self.input_dir.iterdir()):
@@ -40,8 +40,15 @@ class DropEngine:
         if self.device.type == "cuda": torch.cuda.synchronize()
         enhancement_ms = (time.perf_counter() - start) * 1000
         detector_start = time.perf_counter()
-        active_detector = self.bright_detector if self.bright_detector is not None and illumination >= self.route_threshold else self.detector
-        diagnostics["detector_route"] = "bright" if active_detector is self.bright_detector else "lowlight"
+        if self.domain_router is not None:
+            routing = route_domain_bgr(self.domain_router, image, self.device, self.router_size); diagnostics.update(routing)
+            routes = {"clean": self.bright_detector, "synthetic_lowlight": self.detector, "real_lowlight": self.real_detector}
+            active_detector = routes[routing["domain_route"]]
+            if active_detector is None: raise RuntimeError(f"No detector configured for {routing['domain_route']}")
+            diagnostics["detector_route"] = routing["domain_route"]
+        else:
+            active_detector = self.bright_detector if self.bright_detector is not None and illumination >= self.route_threshold else self.detector
+            diagnostics["detector_route"] = "bright" if active_detector is self.bright_detector else "lowlight"
         prediction = active_detector.predict(enhanced, conf=self.confidence, verbose=False)[0]
         if self.device.type == "cuda": torch.cuda.synchronize()
         detector_ms = (time.perf_counter() - detector_start) * 1000
@@ -66,8 +73,8 @@ class DropEngine:
 
 
 def main():
-    parser = argparse.ArgumentParser(); parser.add_argument("--input", type=Path, default=Path("input_drop")); parser.add_argument("--output", type=Path, default=Path("output_results")); parser.add_argument("--generator", type=Path); parser.add_argument("--yolo", default="yolo11n.pt"); parser.add_argument("--bright-yolo"); parser.add_argument("--route-threshold", type=float, default=0.30); parser.add_argument("--conf", type=float, default=0.20); parser.add_argument("--interval", type=float, default=0.5); parser.add_argument("--once", action="store_true", help="Process current files and exit"); parser.add_argument("--force-mode", choices=["bypass", "light", "full"]); parser.add_argument("--imgsz", type=int, default=640)
-    args = parser.parse_args(); DropEngine(args.input, args.output, args.generator, args.yolo, args.conf, args.force_mode, args.imgsz, args.bright_yolo, args.route_threshold).run(args.interval, args.once)
+    parser = argparse.ArgumentParser(); parser.add_argument("--input", type=Path, default=Path("input_drop")); parser.add_argument("--output", type=Path, default=Path("output_results")); parser.add_argument("--generator", type=Path); parser.add_argument("--yolo", default="yolo11n.pt"); parser.add_argument("--bright-yolo"); parser.add_argument("--real-yolo"); parser.add_argument("--router-checkpoint", type=Path); parser.add_argument("--route-threshold", type=float, default=0.30); parser.add_argument("--conf", type=float, default=0.20); parser.add_argument("--interval", type=float, default=0.5); parser.add_argument("--once", action="store_true", help="Process current files and exit"); parser.add_argument("--force-mode", choices=["bypass", "light", "full"]); parser.add_argument("--imgsz", type=int, default=640)
+    args = parser.parse_args(); DropEngine(args.input, args.output, args.generator, args.yolo, args.conf, args.force_mode, args.imgsz, args.bright_yolo, args.route_threshold, args.real_yolo, args.router_checkpoint).run(args.interval, args.once)
 
 
 if __name__ == "__main__": main()

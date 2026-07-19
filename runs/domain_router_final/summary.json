@@ -1,0 +1,13 @@
+{
+  "parameters": 5755,
+  "validation_best_accuracy": 0.9305939078330994,
+  "test_overall_accuracy": 0.8499590158462524,
+  "test_balanced_accuracy": 0.9190349578857422,
+  "per_class_recall": {
+    "clean": 0.9872262477874756,
+    "synthetic_lowlight": 0.9762773513793945,
+    "real_lowlight": 0.7936012744903564
+  },
+  "latency_mean_ms": 0.3499480001628399,
+  "latency_p95_ms": 0.5230049951933324
+}
