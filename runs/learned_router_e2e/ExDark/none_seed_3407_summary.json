@@ -1,0 +1,41 @@
+{
+  "configuration": "none",
+  "domain": "ExDark_LearnedRouter",
+  "images_root": "D:\\LOW_LIGHT\\DAT301-SU26\\datasets\\ExDark-VisDroneOverlap\\images\\test",
+  "labels_root": "D:\\LOW_LIGHT\\DAT301-SU26\\datasets\\ExDark-VisDroneOverlap\\labels\\test",
+  "seed": 3407,
+  "images": 2563,
+  "protocol": {
+    "image_size": 640,
+    "confidence": 0.2,
+    "nms_iou": 0.7,
+    "small_area": 1024.0,
+    "tiny_side": 16.0,
+    "detector_route_threshold": 0.3
+  },
+  "map50": 0.6049219653405944,
+  "map50_95": 0.3925812734965507,
+  "ap_small_50": 0.016679254997248424,
+  "ap_small_50_95": 0.005744917981032391,
+  "precision": 0.4989464812473662,
+  "recall": 0.5952740070387129,
+  "f1": 0.5428702430077945,
+  "small_recall": 0.28292682926829266,
+  "tiny_side_recall": 0.3103448275862069,
+  "fp_per_image": 0.9278189621537261,
+  "class_wise_recall": {
+    "0": 0.5615212527964206,
+    "2": 0.6602870813397129,
+    "3": 0.6496191512513602,
+    "8": 0.75,
+    "9": 0.4834710743801653
+  },
+  "gate_rates": {
+    "none": 1.0
+  },
+  "detector_route_rates": {
+    "clean": 0.01911822083495903,
+    "real_lowlight": 0.7912602419040188,
+    "synthetic_lowlight": 0.18962153726102224
+  }
+}

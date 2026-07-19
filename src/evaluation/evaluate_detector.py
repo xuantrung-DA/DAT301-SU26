@@ -11,7 +11,7 @@ import numpy as np
 import torch
 import yaml
 
-from inference import enhance_bgr_with_details, image_to_tensor, letterbox_bgr, load_detector, load_generator, unletterbox_xyxy
+from inference import enhance_bgr_with_details, image_to_tensor, letterbox_bgr, load_detector, load_domain_router, load_generator, route_domain_bgr, unletterbox_xyxy
 from preprocess.lowlight import clahe_enhance_bgr, gamma_enhance_bgr
 
 IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".bmp"}
@@ -185,6 +185,8 @@ def main() -> None:
     parser.add_argument("--labels", type=Path, required=True)
     parser.add_argument("--yolo", default="yolo11n.pt")
     parser.add_argument("--bright-yolo", help="Optional clean-domain detector selected by mean luminance")
+    parser.add_argument("--real-yolo", help="Optional real-low-light detector selected by learned router")
+    parser.add_argument("--router-checkpoint", type=Path)
     parser.add_argument("--detector-route-threshold", type=float, default=0.30)
     parser.add_argument("--joint-checkpoint", type=Path)
     parser.add_argument("--enhancement", choices=["none", "gamma", "clahe", "m0", "m1", "m2", "mlight"], default="none")
@@ -211,6 +213,8 @@ def main() -> None:
     model = load_generator(args.generator, device) if args.generator else None
     detector = load_detector(args.yolo, args.joint_checkpoint)
     bright_detector = load_detector(args.bright_yolo) if args.bright_yolo else None
+    real_detector = load_detector(args.real_yolo) if args.real_yolo else None
+    domain_router, router_size = load_domain_router(args.router_checkpoint, device) if args.router_checkpoint else (None, 160)
     paths = sorted(path for path in args.images.rglob("*") if path.suffix.lower() in IMAGE_EXTENSIONS)
     if args.max_images:
         paths = paths[: args.max_images]
@@ -225,12 +229,15 @@ def main() -> None:
         model_input, letterbox = letterbox_bgr(image, args.imgsz)
         enhanced, diagnostics = enhance_image(args.enhancement, model, model_input, device)
         illumination_mean = float(cv2.cvtColor(image, cv2.COLOR_BGR2GRAY).mean() / 255.0)
-        active_detector = (
-            bright_detector
-            if bright_detector is not None and illumination_mean >= args.detector_route_threshold
-            else detector
-        )
-        detector_route = "bright" if active_detector is bright_detector else "lowlight"
+        if domain_router is not None:
+            routing = route_domain_bgr(domain_router, image, device, router_size)
+            routes = {"clean": bright_detector, "synthetic_lowlight": detector, "real_lowlight": real_detector}
+            active_detector = routes[routing["domain_route"]]
+            if active_detector is None: raise RuntimeError(f"No detector supplied for {routing['domain_route']}")
+            detector_route = routing["domain_route"]
+        else:
+            active_detector = bright_detector if bright_detector is not None and illumination_mean >= args.detector_route_threshold else detector
+            detector_route = "bright" if active_detector is bright_detector else "lowlight"
         result = active_detector.predict(enhanced, imgsz=args.imgsz, conf=0.001, iou=args.nms_iou, max_det=1000, verbose=False)[0]
         pred_xyxy = result.boxes.xyxy.detach().cpu().numpy() if result.boxes is not None else np.empty((0, 4))
         pred_xyxy = unletterbox_xyxy(pred_xyxy, letterbox)

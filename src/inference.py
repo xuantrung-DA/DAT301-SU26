@@ -8,7 +8,7 @@ import cv2
 import numpy as np
 import torch
 
-from models import LADDEnhancer
+from models import DOMAIN_NAMES, LADDEnhancer, LearnedDomainRouter
 
 
 def _model_from_config(config: dict) -> LADDEnhancer:
@@ -43,6 +43,24 @@ def load_detector(weights: str, joint_checkpoint: Path | None = None):
         if "detector" in state:
             detector.model.load_state_dict(state["detector"])
     return detector
+
+
+def load_domain_router(checkpoint: Path, device: torch.device) -> tuple[LearnedDomainRouter, int]:
+    state = torch.load(checkpoint, map_location="cpu", weights_only=False)
+    if tuple(state.get("domains", ())) != DOMAIN_NAMES:
+        raise ValueError("Domain router checkpoint has an incompatible class order")
+    model = LearnedDomainRouter().to(device)
+    model.load_state_dict(state["model"])
+    return model.eval(), int(state.get("size", 160))
+
+
+@torch.inference_mode()
+def route_domain_bgr(model: LearnedDomainRouter, image_bgr: np.ndarray, device: torch.device, size: int = 160) -> dict[str, Any]:
+    resized = cv2.resize(image_bgr, (size, size), interpolation=cv2.INTER_AREA)
+    tensor = image_to_tensor(resized, device)
+    route, probabilities = model.route(tensor)
+    values = probabilities[0].cpu().tolist()
+    return {"domain_route": DOMAIN_NAMES[int(route[0])], "domain_probabilities": dict(zip(DOMAIN_NAMES, values))}
 
 
 def image_to_tensor(image_bgr: np.ndarray, device: torch.device) -> torch.Tensor:

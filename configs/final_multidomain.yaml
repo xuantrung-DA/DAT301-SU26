@@ -1,7 +1,10 @@
 schema_version: 1
 selection:
-  mode: explicit_domain_then_luminance
-  note: Real-domain routing must be supplied by deployment metadata; it is not inferred from test labels.
+  mode: learned_domain_router
+  checkpoint: runs/domain_router_final/best.pt
+  parameters: 5755
+  test_balanced_accuracy: 0.9190
+  latency_p95_ms: 0.523
   real_domains: [ExDark]
   luminance_threshold: 0.30
 detectors:

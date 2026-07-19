@@ -1,7 +1,7 @@
 import numpy as np
 import torch
 
-from src.models import LADDEnhancer, build_gaussian_box_heatmaps
+from src.models import LADDEnhancer, LearnedDomainRouter, build_gaussian_box_heatmaps
 from src.preprocess.lowlight import LEVEL_CONFIGS, degrade_image_bgr
 from src.preprocess.make_lowlight_visdrone import choose_mix_level
 from src.training.losses import (
@@ -78,3 +78,12 @@ def test_llmix_exact_registered_distribution_over_seed_buckets():
     assert levels.count("LL1") == 32
     assert levels.count("LL2") == 32
     assert levels.count("LL3") == 16
+
+
+def test_learned_domain_router_is_lightweight_and_normalized():
+    router = LearnedDomainRouter().eval()
+    assert sum(parameter.numel() for parameter in router.parameters()) < 50_000
+    with torch.no_grad():
+        route, probabilities = router.route(torch.rand(2, 3, 96, 96))
+    assert route.shape == (2,)
+    assert torch.allclose(probabilities.sum(1), torch.ones(2), atol=1e-6)
